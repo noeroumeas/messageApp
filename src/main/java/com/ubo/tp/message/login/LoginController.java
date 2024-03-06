@@ -4,7 +4,6 @@ import main.java.com.ubo.tp.message.core.database.IDatabase;
 import main.java.com.ubo.tp.message.datamodel.User;
 import main.java.com.ubo.tp.message.ihm.session.ISession;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -54,11 +53,10 @@ public class LoginController implements LoginViewObserver, RegisterViewObserver 
         for(User u : users){
             if(u.getUserTag().equals(tag) && u.getName().equals(name)){
                 session.connect(u);
-                System.out.println("user connected");
                 return;
             }
         }
-        JOptionPane.showMessageDialog(this.loginView, "Tag et nom d'utilisateur incorrects", "Erreur", JOptionPane.ERROR_MESSAGE);
+        this.loginView.displayMessage();
     }
 
     /**
@@ -95,25 +93,14 @@ public class LoginController implements LoginViewObserver, RegisterViewObserver 
     @Override
     public void register(String name, String tag, String avatarPath) {
         RegisterError registerError = isRegisterValid(name, tag, avatarPath);
-        switch (registerError){
-            case TAG_EMPTY:
-                JOptionPane.showMessageDialog(this.registerView, "Le tag est obligatoire", "Erreur", JOptionPane.ERROR_MESSAGE);
-                break;
-            case NAME_EMPTY:
-                JOptionPane.showMessageDialog(this.registerView, "Le nom est obligatoire", "Erreur", JOptionPane.ERROR_MESSAGE);
-                break;
-            case TAG_AND_NAME_EMPTY:
-                JOptionPane.showMessageDialog(this.registerView, "Le nom et le tag sont obligatoires", "Erreur", JOptionPane.ERROR_MESSAGE);
-                break;
-            case TAG_ALREADY_USED:
-                JOptionPane.showMessageDialog(this.registerView, "Tag déjà existant", "Erreur", JOptionPane.ERROR_MESSAGE);
-                break;
-            case VALID:
-                User newUser = new User(UUID.randomUUID(), tag, "test", name, new HashSet<>(), avatarPath);
-                this.database.addUser(newUser);
-                JOptionPane.showMessageDialog(this.registerView, "Compte créé avec succès, vous pouvez maintenant vous connecter");
-                this.switchToLogin();
-                break;
+        if(registerError == RegisterError.VALID){
+            UUID userUUID = UUID.randomUUID();
+            User newUser = new User(userUUID, tag, "test", name, new HashSet<>(), avatarPath);
+            this.database.addUser(newUser);
+            this.registerView.displayMessage(registerError);
+            this.switchToLogin();
+        } else {
+            this.registerView.displayMessage(registerError);
         }
     }
 

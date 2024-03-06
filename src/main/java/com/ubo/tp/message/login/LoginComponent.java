@@ -26,8 +26,6 @@ public class LoginComponent extends JPanel implements NavigatorObserver {
         this.loginView = new LoginView();
         this.registerView = new RegisterView();
 
-        this.add(this.registerView, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
-        this.add(this.loginView, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
         this.switchToLogin();
 
         this.loginController = new LoginController(db, session, this.registerView, this.loginView);
@@ -39,8 +37,7 @@ public class LoginComponent extends JPanel implements NavigatorObserver {
      */
     @Override
     public void switchToLogin() {
-        this.loginView.setVisible(true);
-        this.registerView.setVisible(false);
+        this.changeView(this.loginView);
     }
 
 
@@ -49,7 +46,13 @@ public class LoginComponent extends JPanel implements NavigatorObserver {
      */
     @Override
     public void switchToRegister() {
-        this.loginView.setVisible(false);
-        this.registerView.setVisible(true);
+        this.changeView(this.registerView);
+    }
+
+    protected void changeView(JPanel view) {
+        this.removeAll();
+        this.add(view, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
+        this.revalidate();
+        this.repaint();
     }
 }

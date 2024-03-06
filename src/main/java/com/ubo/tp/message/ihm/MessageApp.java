@@ -6,7 +6,10 @@ import main.java.com.ubo.tp.message.core.EntityManager;
 import main.java.com.ubo.tp.message.core.database.IDatabase;
 import main.java.com.ubo.tp.message.core.directory.IWatchableDirectory;
 import main.java.com.ubo.tp.message.core.directory.WatchableDirectory;
+import main.java.com.ubo.tp.message.datamodel.User;
+import main.java.com.ubo.tp.message.ihm.connectedhome.ConnectedHomeView;
 import main.java.com.ubo.tp.message.ihm.session.ISession;
+import main.java.com.ubo.tp.message.ihm.session.ISessionObserver;
 import main.java.com.ubo.tp.message.ihm.session.Session;
 import main.java.com.ubo.tp.message.login.LoginComponent;
 
@@ -17,7 +20,7 @@ import javax.swing.*;
  *
  * @author S.Lucas
  */
-public class MessageApp {
+public class MessageApp implements ISessionObserver {
 	/**
 	 * Base de données.
 	 */
@@ -54,7 +57,12 @@ public class MessageApp {
      * Session
      */
     protected ISession session;
-	/**
+
+    /**
+     * Vue de la page d'acceuil quand l'utilisateur est connecté
+     */
+    ConnectedHomeView connectedHomeView;
+    /**
 	 * Constructeur.
 	 *
 	 * @param entityManager
@@ -70,6 +78,7 @@ public class MessageApp {
 	 */
 	public void init() {
 		// Init du look and feel de l'application
+        this.initSession();
 		this.initLookAndFeel();
 
         // Initialisation du répertoire d'échange
@@ -77,8 +86,8 @@ public class MessageApp {
 
 		// Initialisation de l'IHM
 		this.initGui();
-        initSession();
         this.initLoginComponent();
+        this.mMainView.setMainPanel(this.loginComponent);
 	}
 
 	/**
@@ -98,6 +107,7 @@ public class MessageApp {
 	protected void initGui() {
         this.mMainView = new MessageAppMainView();
 		this.mMainView.init();
+        this.connectedHomeView = new ConnectedHomeView(this.session);
 	}
 
     /**
@@ -105,13 +115,14 @@ public class MessageApp {
      */
     protected void initSession(){
         this.session = new Session();
+        this.session.addObserver(this);
     }
+
     /**
      * Initialisation du composant login
      */
     protected void initLoginComponent(){
         this.loginComponent = new LoginComponent(this.mDatabase, this.session);
-        this.mMainView.setMainPanel(this.loginComponent);
     }
 
 	/**
@@ -157,4 +168,15 @@ public class MessageApp {
 	public void show() {
 		// ... setVisible?
 	}
+
+    @Override
+    public void notifyLogin(User connectedUser) {
+        this.mMainView.setMainPanel(this.connectedHomeView);
+    }
+
+    @Override
+    public void notifyLogout() {
+        System.out.println("disconnect: " + this.loginComponent.toString());
+        this.mMainView.setMainPanel(this.loginComponent);
+    }
 }
