@@ -20,8 +20,7 @@ public class RegisterView extends JPanel {
      */
     protected String avatarFilePath;
     public RegisterView(){
-        super();
-        this.setLayout(new GridBagLayout());
+        super(new GridBagLayout());
         Dimension textFieldDimensions = new Dimension(100,30);
 
         JLabel nameLabel = new JLabel("Nom* : ");

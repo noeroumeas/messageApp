@@ -15,8 +15,7 @@ public class LoginView extends JPanel {
     ArrayList<LoginViewObserver> observers = new ArrayList<>();
 
     public LoginView(){
-        super();
-        this.setLayout(new GridBagLayout());
+        super(new GridBagLayout());
         Dimension textFieldDimensions = new Dimension(100,30);
 
         JLabel nameLabel = new JLabel("Nom : ");

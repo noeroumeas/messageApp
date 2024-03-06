@@ -21,8 +21,7 @@ public class LoginComponent extends JPanel implements NavigatorObserver {
     protected LoginController loginController;
 
     public LoginComponent(IDatabase db, ISession session){
-
-        this.setLayout(new GridBagLayout());
+        super(new GridBagLayout());
 
         this.loginView = new LoginView();
         this.registerView = new RegisterView();
