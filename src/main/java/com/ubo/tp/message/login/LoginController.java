@@ -58,7 +58,7 @@ public class LoginController implements LoginViewObserver, RegisterViewObserver 
                 return;
             }
         }
-        JOptionPane.showMessageDialog(this.registerView, "Tag et nom d'utilisateur incorrects", "Erreur", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this.loginView, "Tag et nom d'utilisateur incorrects", "Erreur", JOptionPane.ERROR_MESSAGE);
     }
 
     /**

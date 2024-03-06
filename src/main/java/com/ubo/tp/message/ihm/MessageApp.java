@@ -111,7 +111,7 @@ public class MessageApp {
      */
     protected void initLoginComponent(){
         this.loginComponent = new LoginComponent(this.mDatabase, this.session);
-        this.mMainView.setMainPanel(this.loginComponent.getMainView());
+        this.mMainView.setMainPanel(this.loginComponent);
     }
 
 	/**
