@@ -7,7 +7,8 @@ import main.java.com.ubo.tp.message.core.database.IDatabase;
 import main.java.com.ubo.tp.message.core.directory.IWatchableDirectory;
 import main.java.com.ubo.tp.message.core.directory.WatchableDirectory;
 import main.java.com.ubo.tp.message.datamodel.User;
-import main.java.com.ubo.tp.message.ihm.connectedhome.ConnectedHomeView;
+import main.java.com.ubo.tp.message.ihm.connected.ConnectedComponent;
+import main.java.com.ubo.tp.message.ihm.connected.ConnectedHomeView;
 import main.java.com.ubo.tp.message.ihm.session.ISession;
 import main.java.com.ubo.tp.message.ihm.session.ISessionObserver;
 import main.java.com.ubo.tp.message.ihm.session.Session;
@@ -61,7 +62,7 @@ public class MessageApp implements ISessionObserver {
     /**
      * Vue de la page d'acceuil quand l'utilisateur est connecté
      */
-    ConnectedHomeView connectedHomeView;
+    ConnectedComponent connectedComponent;
     /**
 	 * Constructeur.
 	 *
@@ -107,7 +108,7 @@ public class MessageApp implements ISessionObserver {
 	protected void initGui() {
         this.mMainView = new MessageAppMainView();
 		this.mMainView.init();
-        this.connectedHomeView = new ConnectedHomeView(this.session);
+        this.connectedComponent = new ConnectedComponent(this.session, this.mDatabase);
 	}
 
     /**
@@ -171,7 +172,7 @@ public class MessageApp implements ISessionObserver {
 
     @Override
     public void notifyLogin(User connectedUser) {
-        this.mMainView.setMainPanel(this.connectedHomeView);
+        this.mMainView.setMainPanel(this.connectedComponent);
     }
 
     @Override

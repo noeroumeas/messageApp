@@ -47,6 +47,10 @@ public class MessageAppLauncher {
 
         if(IS_TEST_MODE) {
             database.addUser(new User(UUID.randomUUID(), "testTag", "test", "testName", new HashSet<>(), "src/main/resources/images/logo_50.png"));
+
+            for(int i = 0; i < 9; i++) {
+                database.addUser(new User(UUID.randomUUID(), "testTag" + i, "test", "testName" + i, new HashSet<>(), "src/main/resources/images/logo_50.png"));
+            }
         }
 	}
 }
