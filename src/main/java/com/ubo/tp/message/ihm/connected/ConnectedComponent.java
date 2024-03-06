@@ -6,17 +6,19 @@ import main.java.com.ubo.tp.message.ihm.session.ISession;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Set;
 
 public class ConnectedComponent extends JPanel implements NavigatorObserver {
-    protected UserProfileView userProfileView;
+    protected MyProfileView myProfileView;
     protected ConnectedHomeView homeView;
+    protected UserProfileView userProfile;
     public ConnectedComponent(ISession session, IDatabase db){
         super(new GridBagLayout());
         this.homeView = new ConnectedHomeView(session, db);
         this.homeView.addObserver(this);
-        this.userProfileView = new UserProfileView(session);
-        this.userProfileView.addObserver(this);
+        this.myProfileView = new MyProfileView(session);
+        this.myProfileView.addObserver(this);
+        this.userProfile = new UserProfileView();
+        this.userProfile.addObserver(this);
         this.switchHome();
     }
 
@@ -26,8 +28,14 @@ public class ConnectedComponent extends JPanel implements NavigatorObserver {
     }
 
     @Override
-    public void switchUserProfile() {
-        this.switchView(this.userProfileView);
+    public void switchUserProfile(User user) {
+        this.userProfile.init(user);
+        this.switchView(this.userProfile);
+    }
+
+    @Override
+    public void switchMyProfile() {
+        this.switchView(this.myProfileView);
     }
 
     protected void switchView(JPanel view){

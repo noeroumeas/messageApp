@@ -8,7 +8,6 @@ import main.java.com.ubo.tp.message.ihm.userlist.UserListComponent;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Set;
 
 /**
  * Home view when user is connected
@@ -27,8 +26,9 @@ public class ConnectedHomeView extends JPanel implements NavigatorObserver{
 
         AccountNavBarView accountNavBarView = new AccountNavBarView(session);
         accountNavBarView.addObserver(this);
-        leftNavBar.add(accountNavBarView, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
+        leftNavBar.add(accountNavBarView, new GridBagConstraints(0, 0, 1, 1, 1, 0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
         UserListComponent userListComponent = new UserListComponent(db);
+        userListComponent.addObserver(this);
         leftNavBar.add(userListComponent, new GridBagConstraints(0, 1, 1, 1, 1, 4, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
 
         this.add(leftNavBar, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
@@ -52,9 +52,16 @@ public class ConnectedHomeView extends JPanel implements NavigatorObserver{
     }
 
     @Override
-    public void switchUserProfile() {
+    public void switchUserProfile(User user) {
         for(NavigatorObserver o : this.observers){
-            o.switchUserProfile();
+            o.switchUserProfile(user);
+        }
+    }
+
+    @Override
+    public void switchMyProfile() {
+        for(NavigatorObserver o : this.observers){
+            o.switchMyProfile();
         }
     }
 }

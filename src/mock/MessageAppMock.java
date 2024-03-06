@@ -64,8 +64,8 @@ public class MessageAppMock {
 				// Custom de l'affichage
 				JFrame frame = MessageAppMock.this.mFrame;
 				Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-				frame.setLocation((screenSize.width - frame.getWidth()) / 6,
-						(screenSize.height - frame.getHeight()) / 4);
+				frame.setLocation((screenSize.width - frame.getWidth()) / 6 + 600,
+						(screenSize.height - frame.getHeight()) / 4 + 300);
 
 				// Affichage
 				MessageAppMock.this.mFrame.setVisible(true);

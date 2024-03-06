@@ -31,15 +31,15 @@ public class AccountNavBarView extends JPanel implements ISessionObserver {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                notifySwitchUserProfile();
+                notifySwitchMyProfile();
             }
         });
-        this.add(nameAndTagAndAvatar, new GridBagConstraints(0, 0, 1, 1, 2, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
+        this.add(nameAndTagAndAvatar, new GridBagConstraints(0, 0, 1, 1, 2, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(10,0,10,0), 0, 0));
     }
 
-    protected void notifySwitchUserProfile() {
+    protected void notifySwitchMyProfile() {
         for(NavigatorObserver o : this.observers){
-            o.switchUserProfile();
+            o.switchMyProfile();
         }
     }
     @Override
