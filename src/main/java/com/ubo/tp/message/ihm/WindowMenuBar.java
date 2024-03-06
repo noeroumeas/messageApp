@@ -10,13 +10,16 @@ public class WindowMenuBar extends JMenuBar{
 
     public WindowMenuBar(){
         super();
-        JMenuBar menuBar = new JMenuBar();
         JMenu fileMenu = createFileMenu();
-        JMenu infoMenu = createInfoMenu((JFrame) menuBar.getParent());
-        menuBar.add(fileMenu);
-        menuBar.add(infoMenu);
+        JMenu infoMenu = createInfoMenu();
+        this.add(fileMenu);
+        this.add(infoMenu);
     }
 
+    /**
+     * creation du Menu de fichier
+     * @return
+     */
     protected JMenu createFileMenu(){
         JMenu menu = new JMenu("Fichier");
         JMenuItem quitMenuItem = new JMenuItem("Quitter");
@@ -33,13 +36,17 @@ public class WindowMenuBar extends JMenuBar{
         return menu;
     }
 
-    protected JMenu createInfoMenu(JFrame originFrame){
+    /**
+     * creation du menu d'info
+     * @return
+     */
+    protected JMenu createInfoMenu(){
         JMenu menu = new JMenu("?");
         menu.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 ImageIcon icon = new ImageIcon("src/main/resources/images/logo_50.png");
-                JOptionPane.showMessageDialog(originFrame, "<html><center>UBO M2-TIIL<br>Département Informatique</center></html>", "A propos", JOptionPane.INFORMATION_MESSAGE, icon);
+                JOptionPane.showMessageDialog(null, "<html><center>UBO M2-TIIL<br>Département Informatique</center></html>", "A propos", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
             @Override

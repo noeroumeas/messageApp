@@ -11,7 +11,13 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class RegisterView extends JPanel {
+    /**
+     * Observers de la vue
+     */
     protected ArrayList<RegisterViewObserver> observers = new ArrayList<>();
+    /**
+     * chemin d'acces de l'avatar selectionne par l'utilisateur
+     */
     protected String avatarFilePath;
     public RegisterView(){
         super();
@@ -71,16 +77,30 @@ public class RegisterView extends JPanel {
         this.add(loginButton, new GridBagConstraints(0, 3, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
         this.add(registerButton, new GridBagConstraints(1, 3, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
     }
+
+    /**
+     * ajouter un observateur
+     * @param observer
+     */
     public void addObserver(RegisterViewObserver observer){
         observers.add(observer);
     }
 
+    /**
+     * Emettre un evenement de changement de vue vers login
+     */
     protected void notifySwitchToLogin(){
         for(RegisterViewObserver o : observers){
             o.switchToLogin();
         }
     }
 
+    /**
+     * Emettre un evenement register
+     * @param name
+     * @param tag
+     * @param avatarPath
+     */
     protected void notifyRegister(String name, String tag, String avatarPath){
         for(RegisterViewObserver o : observers){
             o.register(name, tag, avatarPath);

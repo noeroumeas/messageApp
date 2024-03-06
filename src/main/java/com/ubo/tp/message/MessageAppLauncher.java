@@ -17,7 +17,7 @@ public class MessageAppLauncher {
 	/**
 	 * Indique si le mode bouchoné est activé.
 	 */
-	protected static boolean IS_MOCK_ENABLED = false;
+	protected static boolean IS_MOCK_ENABLED = true;
 
 	/**
 	 * Launcher.

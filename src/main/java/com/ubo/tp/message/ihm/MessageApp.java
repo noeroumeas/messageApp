@@ -6,6 +6,8 @@ import main.java.com.ubo.tp.message.core.EntityManager;
 import main.java.com.ubo.tp.message.core.database.IDatabase;
 import main.java.com.ubo.tp.message.core.directory.IWatchableDirectory;
 import main.java.com.ubo.tp.message.core.directory.WatchableDirectory;
+import main.java.com.ubo.tp.message.ihm.session.ISession;
+import main.java.com.ubo.tp.message.ihm.session.Session;
 import main.java.com.ubo.tp.message.login.LoginComponent;
 
 import javax.swing.*;
@@ -48,7 +50,10 @@ public class MessageApp {
 	 * Nom de la classe de l'UI.
 	 */
 	protected String mUiClassName;
-
+    /**
+     * Session
+     */
+    protected ISession session;
 	/**
 	 * Constructeur.
 	 *
@@ -72,6 +77,7 @@ public class MessageApp {
 
 		// Initialisation de l'IHM
 		this.initGui();
+        initSession();
         this.initLoginComponent();
 	}
 
@@ -94,8 +100,17 @@ public class MessageApp {
 		this.mMainView.init();
 	}
 
+    /**
+     * Initialisation de la session
+     */
+    protected void initSession(){
+        this.session = new Session();
+    }
+    /**
+     * Initialisation du composant login
+     */
     protected void initLoginComponent(){
-        this.loginComponent = new LoginComponent(this.mDatabase);
+        this.loginComponent = new LoginComponent(this.mDatabase, this.session);
         this.mMainView.setMainPanel(this.loginComponent.getMainView());
     }
 
