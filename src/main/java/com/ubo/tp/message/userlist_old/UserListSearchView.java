@@ -1,36 +1,31 @@
-package main.java.com.ubo.tp.message.ihm.userlist;
+package main.java.com.ubo.tp.message.userlist_old;
 
-import main.java.com.ubo.tp.message.core.database.IDatabase;
-import main.java.com.ubo.tp.message.core.database.IDatabaseObserver;
-import main.java.com.ubo.tp.message.datamodel.Message;
 import main.java.com.ubo.tp.message.datamodel.User;
-import main.java.com.ubo.tp.message.ihm.connected.NavigatorObserver;
+import main.java.com.ubo.tp.message.connected.NavigatorObserver;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.List;
 
-public class UserListSearchView extends JPanel implements IDatabaseObserver, NavigatorObserver {
+public class UserListSearchView extends JPanel implements UsersModelObserver, NavigatorObserver {
     JPanel userList;
     int userListSize;
-    ArrayList<NavigatorObserver> observers;
-    IDatabase database;
-    String userFilter = "";
-    public UserListSearchView(IDatabase database) {
+
+    protected List<UserListSearchViewObserver> observers;
+    FilteredUsersModel filteredUsersModel;
+    public UserListSearchView(FilteredUsersModel filteredUsers) {
         super(new GridBagLayout());
+        this.filteredUsersModel = filteredUsers;
         this.observers = new ArrayList<>();
-        this.database = database;
+        filteredUsers.addObserver(this);
         this.initUserSearchBar();
         this.initUserViewList();
-        database.addObserver(this);
 
     }
+
     public void initUserSearchBar(){
         JPanel searchPanel = new JPanel(new GridBagLayout());
         JTextField searchBar = new JTextField(20);
@@ -46,8 +41,7 @@ public class UserListSearchView extends JPanel implements IDatabaseObserver, Nav
             }
 
             public void warn() {
-                userFilter = searchBar.getText();
-                refreshViewList();
+                notifyFilterChanged(searchBar.getText());
             }
         });
         searchBar.setPreferredSize(new Dimension(10000, 30));
@@ -63,28 +57,18 @@ public class UserListSearchView extends JPanel implements IDatabaseObserver, Nav
     }
 
     protected void refreshViewList(){
-        Set<User> users = this.database.getUsers();
+        List<User> users = this.filteredUsersModel.getUsers();
         this.userListSize = 0;
         this.userList.removeAll();
-        Iterator<User> usersIterator = users.stream().iterator();
-        while(usersIterator.hasNext()){
-            User u = usersIterator.next();
-            if(this.isUserValid(this.userFilter, u)) {
-                this.addUserViewToList(u);
-            }
+
+        for(User u : users){
+            this.addUserViewToList(u);
         }
+
         this.userList.revalidate();
         this.userList.repaint();
         this.revalidate();
         this.repaint();
-
-    }
-
-    protected Boolean isUserValid(String searchedElement, User u){
-        if(searchedElement.isEmpty()){
-            return true;
-        }
-        return u.getUserTag().contains(searchedElement) || u.getName().contains(searchedElement);
     }
 
     protected void addUserViewToList(User u){
@@ -92,39 +76,16 @@ public class UserListSearchView extends JPanel implements IDatabaseObserver, Nav
         userView.addObserver(this);
         this.userList.add(userView, new GridBagConstraints(0, this.userListSize++, 1, 1, 1, 0, GridBagConstraints.WEST, GridBagConstraints.HORIZONTAL, new Insets(5,0,5,0), 0, 0));
     }
-    public void addObserver(NavigatorObserver observer){
-        this.observers.add(observer);
+    public void addObserver(UserListSearchViewObserver observer){
+        this.observers.add( observer);
     }
 
-    @Override
-    public void notifyMessageAdded(Message addedMessage) {
-
+    public void notifyFilterChanged(String filter){
+        for(UserListSearchViewObserver o : this.observers){
+            o.notifyFilterChanged(filter);
+        }
     }
 
-    @Override
-    public void notifyMessageDeleted(Message deletedMessage) {
-
-    }
-
-    @Override
-    public void notifyMessageModified(Message modifiedMessage) {
-
-    }
-
-    @Override
-    public void notifyUserAdded(User addedUser) {
-        this.refreshViewList();
-    }
-
-    @Override
-    public void notifyUserDeleted(User deletedUser) {
-
-    }
-
-    @Override
-    public void notifyUserModified(User modifiedUser) {
-
-    }
 
     @Override
     public void switchHome() {
@@ -141,5 +102,15 @@ public class UserListSearchView extends JPanel implements IDatabaseObserver, Nav
     @Override
     public void switchMyProfile() {
 
+    }
+
+    @Override
+    public void usersChanged(List<User> users) {
+        this.refreshViewList();
+    }
+
+    @Override
+    public void userAdded(User u) {
+        this.refreshViewList();
     }
 }

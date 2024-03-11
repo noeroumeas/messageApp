@@ -1,9 +1,10 @@
-package main.java.com.ubo.tp.message.ihm.connected;
+package main.java.com.ubo.tp.message.connected;
 
 import main.java.com.ubo.tp.message.core.database.IDatabase;
 import main.java.com.ubo.tp.message.datamodel.User;
 import main.java.com.ubo.tp.message.ihm.session.ISession;
-import main.java.com.ubo.tp.message.ihm.userlist.UserListComponent;
+import main.java.com.ubo.tp.message.message.MessagingComponent;
+import main.java.com.ubo.tp.message.userlist.UserListComponent;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,13 +13,15 @@ import java.util.ArrayList;
 /**
  * Home view when user is connected
  */
-public class ConnectedHomeView extends JPanel implements NavigatorObserver{
+public class ConnectedHomeView extends JPanel implements NavigatorObserver {
     ArrayList<NavigatorObserver> observers;
+
     public ConnectedHomeView(ISession session, IDatabase db){
         super(new GridBagLayout());
+
         this.observers = new ArrayList<>();
         this.initLeftNavBar(session, db);
-        this.initMainContent();
+        this.initMainContent(db, session);
     }
 
     protected void initLeftNavBar(ISession session, IDatabase db) {
@@ -27,6 +30,7 @@ public class ConnectedHomeView extends JPanel implements NavigatorObserver{
         AccountNavBarView accountNavBarView = new AccountNavBarView(session);
         accountNavBarView.addObserver(this);
         leftNavBar.add(accountNavBarView, new GridBagConstraints(0, 0, 1, 1, 1, 0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
+
         UserListComponent userListComponent = new UserListComponent(db);
         userListComponent.addObserver(this);
         leftNavBar.add(userListComponent, new GridBagConstraints(0, 1, 1, 1, 1, 4, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
@@ -37,11 +41,11 @@ public class ConnectedHomeView extends JPanel implements NavigatorObserver{
         this.observers.add(observer);
     }
 
-    protected void initMainContent() {
+    protected void initMainContent(IDatabase db, ISession session) {
         JPanel mainContent = new JPanel(new GridBagLayout());
-        mainContent.add(new JButton("Main content"), new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
+        mainContent.add(new MessagingComponent(db, session), new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
 
-        this.add(mainContent, new GridBagConstraints(1, 0, 1, 1, 4, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
+        this.add(mainContent, new GridBagConstraints(1, 0, 1, 1, 5, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
     }
 
     @Override

@@ -7,8 +7,7 @@ import main.java.com.ubo.tp.message.core.database.IDatabase;
 import main.java.com.ubo.tp.message.core.directory.IWatchableDirectory;
 import main.java.com.ubo.tp.message.core.directory.WatchableDirectory;
 import main.java.com.ubo.tp.message.datamodel.User;
-import main.java.com.ubo.tp.message.ihm.connected.ConnectedComponent;
-import main.java.com.ubo.tp.message.ihm.connected.ConnectedHomeView;
+import main.java.com.ubo.tp.message.connected.ConnectedComponent;
 import main.java.com.ubo.tp.message.ihm.session.ISession;
 import main.java.com.ubo.tp.message.ihm.session.ISessionObserver;
 import main.java.com.ubo.tp.message.ihm.session.Session;
@@ -177,7 +176,6 @@ public class MessageApp implements ISessionObserver {
 
     @Override
     public void notifyLogout() {
-        System.out.println("disconnect: " + this.loginComponent.toString());
         this.mMainView.setMainPanel(this.loginComponent);
     }
 }

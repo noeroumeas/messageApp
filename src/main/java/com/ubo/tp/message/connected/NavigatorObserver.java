@@ -1,4 +1,4 @@
-package main.java.com.ubo.tp.message.ihm.connected;
+package main.java.com.ubo.tp.message.connected;
 
 import main.java.com.ubo.tp.message.datamodel.User;
 

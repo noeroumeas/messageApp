@@ -1,7 +1,7 @@
-package main.java.com.ubo.tp.message.ihm.userlist;
+package main.java.com.ubo.tp.message.userlist_old;
 
 import main.java.com.ubo.tp.message.datamodel.User;
-import main.java.com.ubo.tp.message.ihm.connected.NavigatorObserver;
+import main.java.com.ubo.tp.message.connected.NavigatorObserver;
 
 import javax.swing.*;
 import java.awt.*;

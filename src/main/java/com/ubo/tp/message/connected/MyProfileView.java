@@ -1,4 +1,4 @@
-package main.java.com.ubo.tp.message.ihm.connected;
+package main.java.com.ubo.tp.message.connected;
 
 import main.java.com.ubo.tp.message.datamodel.User;
 import main.java.com.ubo.tp.message.ihm.session.ISession;
@@ -10,9 +10,8 @@ import java.util.ArrayList;
 
 public class MyProfileView extends JPanel implements ISessionObserver {
     ArrayList<NavigatorObserver> observers;
-    public MyProfileView(ISession session){
+    public MyProfileView(){
         super(new GridBagLayout());
-        session.addObserver(this);
         this.observers = new ArrayList<>();
         this.initGoHome();
     }
