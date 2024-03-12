@@ -22,10 +22,10 @@ public class MessagingComponent extends JPanel {
         FilterComponent<Message, String> filterComponent = new FilterComponent<>(messageSearchView, filter);
         FilteredElementsModel<Message> filteredMessages = filterComponent.getFilteredElementsModel();
         UnfilteredElementsModel<Message> messages = filterComponent.getUnfilteredElementsModel();
-        MessagesController messagesController = new MessagesController(messages);
-        MessagesView messagesView = new MessagesView(new ArrayList<>(db.getMessages()));
-        db.addObserver(messagesController);
+        MessagesView messagesView = new MessagesView();
         filteredMessages.addObserver(messagesView);
+        MessagesController messagesController = new MessagesController(messages);
+        db.addObserver(messagesController);
         MessageSenderComponent messageSenderComponent = new MessageSenderComponent(session, entityManager);
         this.add(messageSearchView, new GridBagConstraints(0, 0, 1, 1, 1, 0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
         this.add(messagesView, new GridBagConstraints(0, 1, 1, 1, 1, 6, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));

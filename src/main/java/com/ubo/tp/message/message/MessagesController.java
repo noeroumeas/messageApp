@@ -5,15 +5,23 @@ import main.java.com.ubo.tp.message.datamodel.Message;
 import main.java.com.ubo.tp.message.datamodel.User;
 import main.java.com.ubo.tp.message.filter.UnfilteredElementsModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MessagesController implements IDatabaseObserver {
-    protected UnfilteredElementsModel<Message> messages;
-    public MessagesController(UnfilteredElementsModel<Message> messages) {
-        this.messages = messages;
+    protected UnfilteredElementsModel<Message> unfilteredMessages;
+    protected MessagesView messagesView;
+    protected List<Message> messages;
+    public MessagesController(UnfilteredElementsModel<Message> unfilteredMessages) {
+        this.unfilteredMessages = unfilteredMessages;
+        this.messages = unfilteredMessages.getElements();
+        this.unfilteredMessages.setElements(this.messages);
     }
 
     @Override
     public void notifyMessageAdded(Message addedMessage) {
-        messages.add(addedMessage);
+        MessagesOrderer.addMessageToList(this.messages, addedMessage);
+        this.unfilteredMessages.setElements(this.messages);
     }
 
     @Override
