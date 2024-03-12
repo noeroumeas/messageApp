@@ -13,9 +13,10 @@ public class MessageSearchView extends SearchView<MessageFilterable> {
         this.initUserSearchBar();
     }
 
-    public void initUserSearchBar(){
+    protected void initUserSearchBar(){
         JPanel searchPanel = new JPanel(new GridBagLayout());
         JTextField searchBar = new JTextField(20);
+        searchBar.setFont(new Font("Arial", Font.PLAIN, 18));
         searchBar.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
                 warn();

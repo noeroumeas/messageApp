@@ -9,7 +9,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class AccountNavbarComponent extends JPanel implements NavigatorObserver {
-    ArrayList<NavigatorObserver> observers;
+    protected ArrayList<NavigatorObserver> observers;
     public AccountNavbarComponent(ISession session) {
         super(new GridBagLayout());
         this.observers = new ArrayList<>();

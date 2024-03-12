@@ -1,5 +1,6 @@
 package main.java.com.ubo.tp.message.login;
 
+import main.java.com.ubo.tp.message.core.EntityManager;
 import main.java.com.ubo.tp.message.core.database.IDatabase;
 import main.java.com.ubo.tp.message.datamodel.User;
 import main.java.com.ubo.tp.message.ihm.session.ISession;
@@ -15,13 +16,15 @@ public class LoginController implements LoginViewObserver, RegisterViewObserver 
     protected IDatabase database;
     protected ISession session;
     protected ArrayList<NavigatorObserver> observers = new ArrayList<>();
-    public LoginController(IDatabase db, ISession session, RegisterView registerView, LoginView loginView){
+    protected EntityManager entityManager;
+    public LoginController(EntityManager entityManager, IDatabase db, ISession session, RegisterView registerView, LoginView loginView){
         this.registerView = registerView;
         this.loginView = loginView;
         this.registerView.addObserver(this);
         this.loginView.addObserver(this);
         this.database = db;
         this.session = session;
+        this.entityManager = entityManager;
     }
 
     /**
@@ -96,7 +99,7 @@ public class LoginController implements LoginViewObserver, RegisterViewObserver 
         if(registerError == RegisterError.VALID){
             UUID userUUID = UUID.randomUUID();
             User newUser = new User(userUUID, tag, "test", name, new HashSet<>(), avatarPath);
-            this.database.addUser(newUser);
+            this.entityManager.writeUserFile(newUser);
             this.registerView.displayMessage(registerError);
             this.switchToLogin();
         } else {

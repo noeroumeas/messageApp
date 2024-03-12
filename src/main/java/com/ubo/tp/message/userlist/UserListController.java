@@ -7,7 +7,7 @@ import main.java.com.ubo.tp.message.filter.UnfilteredElementsModel;
 import main.java.com.ubo.tp.message.utils.UserWrapper;
 
 public class UserListController implements IDatabaseObserver {
-    UnfilteredElementsModel<UserFilterable> unfilteredUsers;
+    protected UnfilteredElementsModel<UserFilterable> unfilteredUsers;
     public UserListController(UnfilteredElementsModel<UserFilterable> unfilteredUsers) {
         this.unfilteredUsers = unfilteredUsers;
     }

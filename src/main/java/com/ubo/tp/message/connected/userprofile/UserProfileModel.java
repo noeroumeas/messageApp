@@ -16,7 +16,7 @@ public class UserProfileModel {
         this.notifyUserChanged(u);
     }
 
-    private void notifyUserChanged(User u) {
+    protected void notifyUserChanged(User u) {
         for(UserProfileModelObserver o : this.observers){
             o.notifyUserChanged(u);
         }

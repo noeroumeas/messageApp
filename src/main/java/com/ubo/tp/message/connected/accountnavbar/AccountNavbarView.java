@@ -11,9 +11,9 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class AccountNavbarView extends JPanel implements ISessionObserver {
-    ArrayList<AccountNavbarViewObserver> observers;
-    ImageIcon avatar;
-    JLabel nameAndTagAndAvatar;
+    protected ArrayList<AccountNavbarViewObserver> observers;
+    protected ImageIcon avatar;
+    protected JLabel nameAndTagAndAvatar;
     public AccountNavbarView(){
         super(new GridBagLayout());
         this.observers = new ArrayList<>();
@@ -21,14 +21,14 @@ public class AccountNavbarView extends JPanel implements ISessionObserver {
         this.initAccountInfo();
     }
 
-    private void initDisconnectButton() {
+    protected void initDisconnectButton() {
         JButton disconnectButton = new JButton("Se deconnecter");
         disconnectButton.addActionListener(e -> notifyDisconnect());
         this.add(disconnectButton, new GridBagConstraints(2, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
 
     }
 
-    private void initAccountInfo() {
+    protected void initAccountInfo() {
 
         this.avatar = new ImageIcon();
         this.nameAndTagAndAvatar = new JLabel("", avatar, JLabel.CENTER);

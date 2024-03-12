@@ -7,9 +7,9 @@ import main.java.com.ubo.tp.message.ihm.session.ISession;
 
 
 public class MessageSenderController implements MessageSenderViewObserver{
-    ISession session;
-    MessageSenderView messageSenderView;
-    EntityManager entityManager;
+    protected ISession session;
+    protected MessageSenderView messageSenderView;
+    protected EntityManager entityManager;
     public MessageSenderController(ISession session, MessageSenderView messageSenderView, EntityManager entityManager){
         this.session = session;
         this.messageSenderView = messageSenderView;

@@ -47,7 +47,7 @@ public class UnfilteredElementsModel<T> {
         }
     }
 
-    private void notifyElementRemoved(T e) {
+    protected void notifyElementRemoved(T e) {
         for(FilterElementsModelObserver<T> o : this.observers){
             o.elementRemoved(e);
         }

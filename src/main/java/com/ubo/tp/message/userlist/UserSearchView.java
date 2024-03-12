@@ -8,7 +8,7 @@ import javax.swing.event.DocumentListener;
 import java.awt.*;
 
 public class UserSearchView extends SearchView<UserFilterable> {
-    UserSearchView(){
+    public UserSearchView(){
         super(new GridBagLayout());
         this.initUserSearchBar();
     }
@@ -16,6 +16,7 @@ public class UserSearchView extends SearchView<UserFilterable> {
     public void initUserSearchBar(){
         JPanel searchPanel = new JPanel(new GridBagLayout());
         JTextField searchBar = new JTextField(20);
+        searchBar.setFont(new Font("Arial", Font.PLAIN, 18));
         searchBar.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
                 warn();

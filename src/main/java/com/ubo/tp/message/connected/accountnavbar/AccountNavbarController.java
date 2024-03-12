@@ -7,8 +7,8 @@ import main.java.com.ubo.tp.message.ihm.session.ISession;
 import java.util.ArrayList;
 
 public class AccountNavbarController implements AccountNavbarViewObserver {
-    ArrayList<NavigatorObserver> observers;
-    ISession session;
+    protected ArrayList<NavigatorObserver> observers;
+    protected ISession session;
     public AccountNavbarController(ISession session) {
         this.observers = new ArrayList<>();
         this.session = session;

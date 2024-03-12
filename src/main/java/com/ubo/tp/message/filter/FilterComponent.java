@@ -11,7 +11,7 @@ public class FilterComponent<T extends Filterable> {
     public FilterComponent(SearchView<T> searchView){
         this.filteredElementsModel = new FilteredElementsModel<>();
         this.unfilteredElementsModel = new UnfilteredElementsModel<>();
-        this.filterController = new FilterController<>(this.unfilteredElementsModel.getElements(), this.filteredElementsModel);
+        this.filterController = new FilterController<>(this.filteredElementsModel);
         this.unfilteredElementsModel.addObserver(filterController);
         this.searchView = searchView;
         searchView.addObserver(filterController);

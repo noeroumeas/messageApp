@@ -7,7 +7,7 @@ import main.java.com.ubo.tp.message.filter.UnfilteredElementsModel;
 import main.java.com.ubo.tp.message.utils.MessageWrapper;
 
 public class MessagesController implements IDatabaseObserver {
-    UnfilteredElementsModel<MessageFilterable> messages;
+    protected UnfilteredElementsModel<MessageFilterable> messages;
     public MessagesController(UnfilteredElementsModel<MessageFilterable> messages) {
         this.messages = messages;
     }

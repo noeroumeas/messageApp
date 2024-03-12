@@ -1,6 +1,7 @@
 package main.java.com.ubo.tp.message.connected.userprofile;
 
 import main.java.com.ubo.tp.message.connected.NavigatorObserver;
+import main.java.com.ubo.tp.message.core.EntityManager;
 import main.java.com.ubo.tp.message.datamodel.User;
 import main.java.com.ubo.tp.message.ihm.session.ISession;
 
@@ -11,12 +12,12 @@ import java.util.ArrayList;
 public class UserProfileComponent extends JPanel implements NavigatorObserver {
     protected ArrayList<NavigatorObserver> observers;
     protected UserProfileController userProfileController;
-    public UserProfileComponent(ISession session) {
+    public UserProfileComponent(EntityManager entityManager, ISession session) {
         super(new GridBagLayout());
         this.observers = new ArrayList<>();
         UserProfileView userProfileView = new UserProfileView(session);
         UserProfileModel userProfileModel = new UserProfileModel();
-        this.userProfileController = new UserProfileController(session, userProfileModel);
+        this.userProfileController = new UserProfileController(entityManager, session, userProfileModel);
 
         userProfileModel.addObserver(userProfileView);
         userProfileController.addObserver(this);

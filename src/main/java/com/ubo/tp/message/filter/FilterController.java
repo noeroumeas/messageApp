@@ -7,9 +7,10 @@ public class FilterController<T extends Filterable> implements SearchViewObserve
     protected FilteredElementsModel<T> filteredElements;
     protected String filter;
     protected List<T> elements;
-    public FilterController(List<T> elements, FilteredElementsModel<T> filteredElements) {
+
+    public FilterController(FilteredElementsModel<T> filteredElements) {
         this.filteredElements = filteredElements;
-        this.elements = elements;
+        this.elements = new ArrayList<>();
         this.filter = "";
         refreshViewList();
     }

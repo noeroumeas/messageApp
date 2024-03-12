@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * Home view when user is connected
  */
 public class ConnectedHomeView extends JPanel implements NavigatorObserver {
-    ArrayList<NavigatorObserver> observers;
+    protected ArrayList<NavigatorObserver> observers;
 
     public ConnectedHomeView(ISession session, IDatabase db, EntityManager entityManager){
         super(new GridBagLayout());

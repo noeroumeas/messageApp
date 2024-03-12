@@ -122,7 +122,7 @@ public class MessageApp implements ISessionObserver {
      * Initialisation du composant login
      */
     protected void initLoginComponent(){
-        this.loginComponent = new LoginComponent(this.mDatabase, this.session);
+        this.loginComponent = new LoginComponent(this.mEntityManager, this.mDatabase, this.session);
     }
 
 	/**
@@ -137,7 +137,8 @@ public class MessageApp implements ISessionObserver {
         while(!isValideExchangeDirectory(file)) {
             file = fileChooser.getFolder(null);
         }
-        this.initDirectory(file.getPath());
+        //this.initDirectory(file.getPath());
+        this.initDirectory("dataSpaceTest");
 	}
 
 	/**

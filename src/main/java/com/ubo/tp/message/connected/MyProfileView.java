@@ -25,23 +25,23 @@ public class MyProfileView extends JPanel implements ISessionObserver {
 
         this.add(goHomeButton, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
     }
-    public void initNameAndTag(){
+    protected void initNameAndTag(){
         this.nameAndTag = new JLabel("", JLabel.CENTER);
 
         this.add(this.nameAndTag, new GridBagConstraints(0, 1, 1, 1, 5, 2, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
     }
 
-    public void initAvatar(){
+    protected void initAvatar(){
         this.avatar = new JLabel("", JLabel.CENTER);
 
         this.add(this.avatar, new GridBagConstraints(0, 6, 1, 1, 5, 5, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
     }
 
-    public void refreshNameAndTag(User user){
+    protected void refreshNameAndTag(User user){
         this.nameAndTag.setText(user.getName() + " " + user.getUserTag());
     }
 
-    private void refreshAvatar(User user) {
+    protected void refreshAvatar(User user) {
         this.avatar.setIcon(new ImageIcon(user.getAvatarPath()));
     }
 

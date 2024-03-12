@@ -16,7 +16,7 @@ public class MessageView extends JPanel {
         this.initMessage(message);
     }
 
-    private void initInfoMessage(MessageFilterable message) {
+    protected void initInfoMessage(MessageFilterable message) {
 
         Date date = new Date(message.getEmissionDate());
         SimpleDateFormat DateFormat = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
@@ -26,7 +26,7 @@ public class MessageView extends JPanel {
         this.add(messageInfoLabel, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
     }
 
-    private void initMessage(MessageFilterable message) {
+    protected void initMessage(MessageFilterable message) {
         JLabel messageLabel = new JLabel("<html>" + message.getText() + "</html>", JLabel.LEFT);
         messageLabel.setFont(new Font("Arial", Font.PLAIN, 18));
         this.add(messageLabel, new GridBagConstraints(0, 1, 1, 1, 1, 3, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));

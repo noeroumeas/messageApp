@@ -1,5 +1,6 @@
 package main.java.com.ubo.tp.message.login;
 
+import main.java.com.ubo.tp.message.core.EntityManager;
 import main.java.com.ubo.tp.message.core.database.IDatabase;
 import main.java.com.ubo.tp.message.ihm.session.ISession;
 
@@ -20,7 +21,7 @@ public class LoginComponent extends JPanel implements NavigatorObserver {
      */
     protected LoginController loginController;
 
-    public LoginComponent(IDatabase db, ISession session){
+    public LoginComponent(EntityManager entityManager, IDatabase db, ISession session){
         super(new GridBagLayout());
 
         this.loginView = new LoginView();
@@ -28,7 +29,7 @@ public class LoginComponent extends JPanel implements NavigatorObserver {
 
         this.switchToLogin();
 
-        this.loginController = new LoginController(db, session, this.registerView, this.loginView);
+        this.loginController = new LoginController(entityManager, db, session, this.registerView, this.loginView);
         this.loginController.addObserver(this);
     }
 

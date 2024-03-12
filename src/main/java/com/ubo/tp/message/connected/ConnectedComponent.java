@@ -24,9 +24,12 @@ public class ConnectedComponent extends JPanel implements NavigatorObserver {
         this.myProfileView = new MyProfileView();
         session.addObserver(this.myProfileView);
         this.myProfileView.addObserver(this);
-        this.userProfileComponent = new UserProfileComponent(session);
+        this.userProfileComponent = new UserProfileComponent(entityManager, session);
 
         this.userProfileComponent.addObserver(this);
+        NotificationSender notificationSender = new NotificationSender();
+        session.addObserver(notificationSender);
+        db.addObserver(notificationSender);
         this.switchHome();
 
     }

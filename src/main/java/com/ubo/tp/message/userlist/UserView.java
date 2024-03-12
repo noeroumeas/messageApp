@@ -36,7 +36,7 @@ public class UserView extends JPanel {
     public void addObserver(NavigatorObserver observer){
         this.observers.add(observer);
     }
-    private void notifySwitchUserProfile(User user) {
+    protected void notifySwitchUserProfile(User user) {
         for(NavigatorObserver o : this.observers){
             o.switchUserProfile(user);
         }
