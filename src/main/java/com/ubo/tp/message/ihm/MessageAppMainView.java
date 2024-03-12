@@ -9,7 +9,6 @@ import java.awt.*;
 public class MessageAppMainView {
     JFrame mFrame;
     JPanel mPanel;
-    protected FileChooser fileChooser;
     public void init(){
         initMFrame();
         initWindowMenu();

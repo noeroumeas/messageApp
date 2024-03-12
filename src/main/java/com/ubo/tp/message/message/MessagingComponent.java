@@ -1,5 +1,6 @@
 package main.java.com.ubo.tp.message.message;
 
+import main.java.com.ubo.tp.message.core.EntityManager;
 import main.java.com.ubo.tp.message.core.database.IDatabase;
 import main.java.com.ubo.tp.message.filter.FilterComponent;
 import main.java.com.ubo.tp.message.filter.FilteredElementsModel;
@@ -13,7 +14,7 @@ import java.awt.*;
 
 public class MessagingComponent extends JPanel {
 
-    public MessagingComponent(IDatabase db, ISession session) {
+    public MessagingComponent(IDatabase db, ISession session, EntityManager entityManager) {
         super(new GridBagLayout());
         MessageSearchView messageSearchView = new MessageSearchView();
         FilterComponent<MessageFilterable> filterComponent = new FilterComponent<>(messageSearchView);
@@ -23,7 +24,7 @@ public class MessagingComponent extends JPanel {
         MessagesView messagesView = new MessagesView(MessageWrapper.messagesToMessagesFilterable(db.getMessages()));
         db.addObserver(messagesController);
         filteredMessages.addObserver(messagesView);
-        MessageSenderComponent messageSenderComponent = new MessageSenderComponent(db, session);
+        MessageSenderComponent messageSenderComponent = new MessageSenderComponent(session, entityManager);
         this.add(messageSearchView, new GridBagConstraints(0, 0, 1, 1, 1, 0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
         this.add(messagesView, new GridBagConstraints(0, 1, 1, 1, 1, 6, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
         this.add(messageSenderComponent.getMessageSenderView(), new GridBagConstraints(0, 7, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));

@@ -82,7 +82,7 @@ public class MessageApp implements ISessionObserver {
 		this.initLookAndFeel();
 
         // Initialisation du répertoire d'échange
-        //this.initDirectory();
+        this.initDirectory();
 
 		// Initialisation de l'IHM
 		this.initGui();
@@ -107,7 +107,7 @@ public class MessageApp implements ISessionObserver {
 	protected void initGui() {
         this.mMainView = new MessageAppMainView();
 		this.mMainView.init();
-        this.connectedComponent = new ConnectedComponent(this.session, this.mDatabase);
+        this.connectedComponent = new ConnectedComponent(this.session, this.mDatabase, this.mEntityManager);
 	}
 
     /**

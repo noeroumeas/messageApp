@@ -1,9 +1,13 @@
 package main.java.com.ubo.tp.message.connected;
 
+import main.java.com.ubo.tp.message.connected.userprofile.UserProfileComponent;
+import main.java.com.ubo.tp.message.connected.userprofile.UserProfileController;
+import main.java.com.ubo.tp.message.connected.userprofile.UserProfileModel;
+import main.java.com.ubo.tp.message.connected.userprofile.UserProfileView;
+import main.java.com.ubo.tp.message.core.EntityManager;
 import main.java.com.ubo.tp.message.core.database.IDatabase;
 import main.java.com.ubo.tp.message.datamodel.User;
 import main.java.com.ubo.tp.message.ihm.session.ISession;
-import main.java.com.ubo.tp.message.message.MessagingComponent;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,21 +15,20 @@ import java.awt.*;
 public class ConnectedComponent extends JPanel implements NavigatorObserver {
     protected MyProfileView myProfileView;
     protected ConnectedHomeView homeView;
-    protected UserProfileView userProfile;
-    protected UserProfileController userProfileController;
-    protected MessagingComponent messagingComponent;
-    public ConnectedComponent(ISession session, IDatabase db){
+    protected UserProfileComponent userProfileComponent;
+    protected UserProfileModel userProfileModel;
+    public ConnectedComponent(ISession session, IDatabase db, EntityManager entityManager){
         super(new GridBagLayout());
-        this.homeView = new ConnectedHomeView(session, db);
+        this.homeView = new ConnectedHomeView(session, db, entityManager);
         this.homeView.addObserver(this);
         this.myProfileView = new MyProfileView();
         session.addObserver(this.myProfileView);
         this.myProfileView.addObserver(this);
-        this.userProfile = new UserProfileView(session);
-        this.userProfileController = new UserProfileController(session);
-        this.userProfileController.addObserver(this);
-        this.userProfile.addObserver(this.userProfileController);
+        this.userProfileComponent = new UserProfileComponent(session);
+
+        this.userProfileComponent.addObserver(this);
         this.switchHome();
+
     }
 
     @Override
@@ -34,9 +37,9 @@ public class ConnectedComponent extends JPanel implements NavigatorObserver {
     }
 
     @Override
-    public void switchUserProfile(User user) {
-        this.userProfile.init(user);
-        this.switchView(this.userProfile);
+    public void switchUserProfile(User u) {
+        this.userProfileComponent.setUser(u);
+        this.switchView(this.userProfileComponent);
     }
 
     @Override

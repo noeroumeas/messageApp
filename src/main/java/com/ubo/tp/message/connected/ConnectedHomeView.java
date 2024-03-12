@@ -1,5 +1,7 @@
 package main.java.com.ubo.tp.message.connected;
 
+import main.java.com.ubo.tp.message.connected.accountnavbar.AccountNavbarComponent;
+import main.java.com.ubo.tp.message.core.EntityManager;
 import main.java.com.ubo.tp.message.core.database.IDatabase;
 import main.java.com.ubo.tp.message.datamodel.User;
 import main.java.com.ubo.tp.message.ihm.session.ISession;
@@ -16,34 +18,34 @@ import java.util.ArrayList;
 public class ConnectedHomeView extends JPanel implements NavigatorObserver {
     ArrayList<NavigatorObserver> observers;
 
-    public ConnectedHomeView(ISession session, IDatabase db){
+    public ConnectedHomeView(ISession session, IDatabase db, EntityManager entityManager){
         super(new GridBagLayout());
 
         this.observers = new ArrayList<>();
-        this.initLeftNavBar(session, db);
-        this.initMainContent(db, session);
+        this.initRightNavbar(session, db);
+        this.initMainContent(db, session, entityManager);
     }
 
-    protected void initLeftNavBar(ISession session, IDatabase db) {
-        JPanel leftNavBar = new JPanel(new GridBagLayout());
+    protected void initRightNavbar(ISession session, IDatabase db) {
+        JPanel rightNavbar = new JPanel(new GridBagLayout());
 
-        AccountNavBarView accountNavBarView = new AccountNavBarView(session);
-        accountNavBarView.addObserver(this);
-        leftNavBar.add(accountNavBarView, new GridBagConstraints(0, 0, 1, 1, 1, 0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
+        AccountNavbarComponent accountNavbarComponent = new AccountNavbarComponent(session);
+        accountNavbarComponent.addObserver(this);
+        rightNavbar.add(accountNavbarComponent, new GridBagConstraints(0, 0, 1, 1, 1, 0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
 
         UserListComponent userListComponent = new UserListComponent(db);
         userListComponent.addObserver(this);
-        leftNavBar.add(userListComponent, new GridBagConstraints(0, 1, 1, 1, 1, 4, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
+        rightNavbar.add(userListComponent, new GridBagConstraints(0, 1, 1, 1, 1, 4, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
 
-        this.add(leftNavBar, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
+        this.add(rightNavbar, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
     }
     public void addObserver(NavigatorObserver observer){
         this.observers.add(observer);
     }
 
-    protected void initMainContent(IDatabase db, ISession session) {
+    protected void initMainContent(IDatabase db, ISession session, EntityManager entityManager) {
         JPanel mainContent = new JPanel(new GridBagLayout());
-        mainContent.add(new MessagingComponent(db, session), new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
+        mainContent.add(new MessagingComponent(db, session, entityManager), new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
 
         this.add(mainContent, new GridBagConstraints(1, 0, 1, 1, 5, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
     }

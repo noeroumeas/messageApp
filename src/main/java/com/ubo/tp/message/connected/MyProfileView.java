@@ -9,29 +9,40 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class MyProfileView extends JPanel implements ISessionObserver {
-    ArrayList<NavigatorObserver> observers;
+    protected ArrayList<NavigatorObserver> observers;
+    protected JLabel nameAndTag;
+    protected JLabel avatar;
     public MyProfileView(){
         super(new GridBagLayout());
         this.observers = new ArrayList<>();
         this.initGoHome();
+        this.initNameAndTag();
+        this.initAvatar();
     }
-    public void initGoHome(){
+    protected void initGoHome(){
         JButton goHomeButton = new JButton("Accueil");
         goHomeButton.addActionListener(e -> this.notifySwitchHome());
 
         this.add(goHomeButton, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
     }
-    public void initNameAndTag(User user){
-        JLabel nameAndTag = new JLabel(user.getName() + " " + user.getUserTag(), JLabel.CENTER);
+    public void initNameAndTag(){
+        this.nameAndTag = new JLabel("", JLabel.CENTER);
 
-        this.add(nameAndTag, new GridBagConstraints(0, 1, 1, 1, 5, 2, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
+        this.add(this.nameAndTag, new GridBagConstraints(0, 1, 1, 1, 5, 2, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
     }
 
-    public void initAvatar(User user){
-        ImageIcon avatar = new ImageIcon(user.getAvatarPath());
-        JLabel avatarLabel = new JLabel(avatar);
+    public void initAvatar(){
+        this.avatar = new JLabel("", JLabel.CENTER);
 
-        this.add(avatarLabel, new GridBagConstraints(0, 6, 1, 1, 5, 5, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
+        this.add(this.avatar, new GridBagConstraints(0, 6, 1, 1, 5, 5, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
+    }
+
+    public void refreshNameAndTag(User user){
+        this.nameAndTag.setText(user.getName() + " " + user.getUserTag());
+    }
+
+    private void refreshAvatar(User user) {
+        this.avatar.setIcon(new ImageIcon(user.getAvatarPath()));
     }
 
     protected void notifySwitchHome(){
@@ -45,8 +56,10 @@ public class MyProfileView extends JPanel implements ISessionObserver {
     }
     @Override
     public void notifyLogin(User connectedUser) {
-        this.initNameAndTag(connectedUser);
-        this.initAvatar(connectedUser);
+        this.refreshNameAndTag(connectedUser);
+        this.refreshAvatar(connectedUser);
+        this.revalidate();
+        this.repaint();
     }
 
     @Override

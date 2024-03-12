@@ -1,5 +1,6 @@
-package main.java.com.ubo.tp.message.connected;
+package main.java.com.ubo.tp.message.connected.userprofile;
 
+import main.java.com.ubo.tp.message.connected.NavigatorObserver;
 import main.java.com.ubo.tp.message.datamodel.User;
 import main.java.com.ubo.tp.message.ihm.session.ISession;
 
@@ -8,7 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class UserProfileView extends JPanel {
+public class UserProfileView extends JPanel implements  UserProfileModelObserver{
     ArrayList<UserProfileViewObserver> observers;
     ISession session;
     JButton followButton;
@@ -44,7 +45,7 @@ public class UserProfileView extends JPanel {
 
     private void refreshFollowButton(User user) {
         this.followButton.removeActionListener(this.followButtonActionListener);
-        if(session.getConnectedUser().isFollowing(user)){
+        if(this.session.getConnectedUser().isFollowing(user)){
             this.followButton.setText("unfollow");
              this.followButtonActionListener = e -> {
                  this.notifyUnfollow(user);
@@ -96,5 +97,10 @@ public class UserProfileView extends JPanel {
         for(NavigatorObserver o : this.observers){
             o.switchHome();
         }
+    }
+
+    @Override
+    public void notifyUserChanged(User u) {
+        init(u);
     }
 }

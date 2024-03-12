@@ -1,18 +1,19 @@
 package main.java.com.ubo.tp.message.message.sender;
 
+import main.java.com.ubo.tp.message.core.EntityManager;
 import main.java.com.ubo.tp.message.core.database.IDatabase;
 import main.java.com.ubo.tp.message.datamodel.Message;
 import main.java.com.ubo.tp.message.ihm.session.ISession;
 
 
 public class MessageSenderController implements MessageSenderViewObserver{
-    IDatabase db;
     ISession session;
     MessageSenderView messageSenderView;
-    public MessageSenderController(IDatabase db, ISession session, MessageSenderView messageSenderView){
-        this.db = db;
+    EntityManager entityManager;
+    public MessageSenderController(ISession session, MessageSenderView messageSenderView, EntityManager entityManager){
         this.session = session;
         this.messageSenderView = messageSenderView;
+        this.entityManager = entityManager;
     }
     @Override
     public void notifyMessageSend(String msg) {
@@ -24,7 +25,8 @@ public class MessageSenderController implements MessageSenderViewObserver{
             this.messageSenderView.displayMessageTooBig();
             return;
         }
-        this.db.addMessage(new Message(this.session.getConnectedUser(), msg));
+        Message newMessage = new Message(this.session.getConnectedUser(), msg);
+        this.entityManager.writeMessageFile(newMessage);
         this.messageSenderView.clearMessageTextField();
     }
 }
