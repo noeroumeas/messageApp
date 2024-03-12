@@ -1,10 +1,7 @@
 package main.java.com.ubo.tp.message.ihm;
 
-import com.sun.corba.se.impl.transport.CorbaInboundConnectionCacheImpl;
-
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
-import java.awt.event.ActionListener;
 import java.io.File;
 
 public class FileChooser {

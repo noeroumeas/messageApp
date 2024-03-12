@@ -1,6 +1,6 @@
 package main.java.com.ubo.tp.message.message;
 
-import main.java.com.ubo.tp.message.connected.NavigatorObserver;
+import main.java.com.ubo.tp.message.datamodel.Message;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,16 +8,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MessageView extends JPanel {
-    protected MessageFilterable message;
-    public MessageView(MessageFilterable message){
+    protected Message message;
+    public MessageView(Message message){
         super(new GridBagLayout());
         this.message = message;
         this.initInfoMessage(message);
         this.initMessage(message);
     }
 
-    protected void initInfoMessage(MessageFilterable message) {
-
+    protected void initInfoMessage(Message message) {
         Date date = new Date(message.getEmissionDate());
         SimpleDateFormat DateFormat = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
         String dateText = DateFormat.format(date);
@@ -26,7 +25,7 @@ public class MessageView extends JPanel {
         this.add(messageInfoLabel, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
     }
 
-    protected void initMessage(MessageFilterable message) {
+    protected void initMessage(Message message) {
         JLabel messageLabel = new JLabel("<html>" + message.getText() + "</html>", JLabel.LEFT);
         messageLabel.setFont(new Font("Arial", Font.PLAIN, 18));
         this.add(messageLabel, new GridBagConstraints(0, 1, 1, 1, 1, 3, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));

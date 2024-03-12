@@ -1,7 +1,5 @@
 package main.java.com.ubo.tp.message.login;
 
-import main.java.com.ubo.tp.message.datamodel.User;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
@@ -9,12 +7,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.UUID;
 
 public class RegisterView extends JPanel {
     /**

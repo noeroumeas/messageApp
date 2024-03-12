@@ -2,9 +2,11 @@ package main.java.com.ubo.tp.message.userlist;
 
 import main.java.com.ubo.tp.message.connected.NavigatorObserver;
 import main.java.com.ubo.tp.message.datamodel.User;
+import main.java.com.ubo.tp.message.utils.ImagePanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.util.ArrayList;
 
 public class UserView extends JPanel {
@@ -19,17 +21,19 @@ public class UserView extends JPanel {
     }
 
     protected void initUserLabel(User user){
-        ImageIcon avatar = new ImageIcon(user.getAvatarPath());
+        File avatarFile = new File(user.getAvatarPath());
+        JPanel avatarPanel = new ImagePanel(avatarFile, new Dimension(50,50));
 
-        JLabel userLabel = new JLabel("<html>" + user.getName() + "<br>" + user.getUserTag() + "</html>", avatar, JLabel.CENTER);
+        JLabel userLabel = new JLabel("<html>" + user.getName() + "<br>" + user.getUserTag() + "</html>", JLabel.CENTER);
 
-        this.add(userLabel, new GridBagConstraints(0, 0, 1, 1, 2, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
+        this.add(avatarPanel, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
+        this.add(userLabel, new GridBagConstraints(1, 0, 1, 1, 2, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
     }
 
     protected void initSeeProfile(User user){
         JButton buttonSeeProfile = new JButton("profil");
         buttonSeeProfile.addActionListener(e -> notifySwitchUserProfile(user));
-        this.add(buttonSeeProfile, new GridBagConstraints(2, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
+        this.add(buttonSeeProfile, new GridBagConstraints(3, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
     }
 
 

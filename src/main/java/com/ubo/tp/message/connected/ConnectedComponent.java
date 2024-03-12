@@ -1,9 +1,6 @@
 package main.java.com.ubo.tp.message.connected;
 
 import main.java.com.ubo.tp.message.connected.userprofile.UserProfileComponent;
-import main.java.com.ubo.tp.message.connected.userprofile.UserProfileController;
-import main.java.com.ubo.tp.message.connected.userprofile.UserProfileModel;
-import main.java.com.ubo.tp.message.connected.userprofile.UserProfileView;
 import main.java.com.ubo.tp.message.core.EntityManager;
 import main.java.com.ubo.tp.message.core.database.IDatabase;
 import main.java.com.ubo.tp.message.datamodel.User;
@@ -16,7 +13,6 @@ public class ConnectedComponent extends JPanel implements NavigatorObserver {
     protected MyProfileView myProfileView;
     protected ConnectedHomeView homeView;
     protected UserProfileComponent userProfileComponent;
-    protected UserProfileModel userProfileModel;
     public ConnectedComponent(ISession session, IDatabase db, EntityManager entityManager){
         super(new GridBagLayout());
         this.homeView = new ConnectedHomeView(session, db, entityManager);

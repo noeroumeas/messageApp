@@ -2,26 +2,28 @@ package main.java.com.ubo.tp.message.message;
 
 import main.java.com.ubo.tp.message.core.EntityManager;
 import main.java.com.ubo.tp.message.core.database.IDatabase;
+import main.java.com.ubo.tp.message.datamodel.Message;
 import main.java.com.ubo.tp.message.filter.FilterComponent;
 import main.java.com.ubo.tp.message.filter.FilteredElementsModel;
 import main.java.com.ubo.tp.message.filter.UnfilteredElementsModel;
 import main.java.com.ubo.tp.message.ihm.session.ISession;
 import main.java.com.ubo.tp.message.message.sender.MessageSenderComponent;
-import main.java.com.ubo.tp.message.utils.MessageWrapper;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class MessagingComponent extends JPanel {
 
     public MessagingComponent(IDatabase db, ISession session, EntityManager entityManager) {
         super(new GridBagLayout());
         MessageSearchView messageSearchView = new MessageSearchView();
-        FilterComponent<MessageFilterable> filterComponent = new FilterComponent<>(messageSearchView);
-        FilteredElementsModel<MessageFilterable> filteredMessages = filterComponent.getFilteredElementsModel();
-        UnfilteredElementsModel<MessageFilterable> messages = filterComponent.getUnfilteredElementsModel();
+        FilterMessage filter = new FilterMessage("");
+        FilterComponent<Message, String> filterComponent = new FilterComponent<>(messageSearchView, filter);
+        FilteredElementsModel<Message> filteredMessages = filterComponent.getFilteredElementsModel();
+        UnfilteredElementsModel<Message> messages = filterComponent.getUnfilteredElementsModel();
         MessagesController messagesController = new MessagesController(messages);
-        MessagesView messagesView = new MessagesView(MessageWrapper.messagesToMessagesFilterable(db.getMessages()));
+        MessagesView messagesView = new MessagesView(new ArrayList<>(db.getMessages()));
         db.addObserver(messagesController);
         filteredMessages.addObserver(messagesView);
         MessageSenderComponent messageSenderComponent = new MessageSenderComponent(session, entityManager);

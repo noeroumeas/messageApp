@@ -6,7 +6,6 @@ import main.java.com.ubo.tp.message.datamodel.User;
 import main.java.com.ubo.tp.message.filter.FilterComponent;
 import main.java.com.ubo.tp.message.filter.FilteredElementsModel;
 import main.java.com.ubo.tp.message.filter.UnfilteredElementsModel;
-import main.java.com.ubo.tp.message.utils.UserWrapper;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,9 +18,10 @@ public class UserListComponent extends JPanel implements UserListViewObserver {
         this.observers = new ArrayList<>();
 
         UserSearchView userSearchView = new UserSearchView();
-        FilterComponent<UserFilterable> filterComponent = new FilterComponent<>(userSearchView);
-        FilteredElementsModel<UserFilterable> filteredUsers = filterComponent.getFilteredElementsModel();
-        UnfilteredElementsModel<UserFilterable> unfilteredUsers = filterComponent.getUnfilteredElementsModel();
+        FilterUser filter = new FilterUser("");
+        FilterComponent<User, String> filterComponent = new FilterComponent<>(userSearchView, filter);
+        FilteredElementsModel<User> filteredUsers = filterComponent.getFilteredElementsModel();
+        UnfilteredElementsModel<User> unfilteredUsers = filterComponent.getUnfilteredElementsModel();
 
         UserListController userListController = new UserListController(unfilteredUsers);
 

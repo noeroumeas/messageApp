@@ -1,7 +1,5 @@
 package main.java.com.ubo.tp.message.login;
 
-import main.java.com.ubo.tp.message.login.LoginViewObserver;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

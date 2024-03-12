@@ -1,5 +1,6 @@
 package main.java.com.ubo.tp.message.userlist;
 
+import main.java.com.ubo.tp.message.datamodel.User;
 import main.java.com.ubo.tp.message.filter.SearchView;
 
 import javax.swing.*;
@@ -7,7 +8,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
 
-public class UserSearchView extends SearchView<UserFilterable> {
+public class UserSearchView extends SearchView<User> {
     public UserSearchView(){
         super(new GridBagLayout());
         this.initUserSearchBar();

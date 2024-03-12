@@ -1,9 +1,9 @@
 package main.java.com.ubo.tp.message.core.database;
 
-import java.util.Set;
-
 import main.java.com.ubo.tp.message.datamodel.Message;
 import main.java.com.ubo.tp.message.datamodel.User;
+
+import java.util.Set;
 
 /**
  * Interface de la base de données de l'application.

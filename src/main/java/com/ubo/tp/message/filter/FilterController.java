@@ -3,22 +3,22 @@ package main.java.com.ubo.tp.message.filter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FilterController<T extends Filterable> implements SearchViewObserver, FilterElementsModelObserver<T> {
+public class FilterController<T, K> implements SearchViewObserver<K>, FilterElementsModelObserver<T> {
     protected FilteredElementsModel<T> filteredElements;
-    protected String filter;
+    protected Filter<T, K> filter;
     protected List<T> elements;
 
-    public FilterController(FilteredElementsModel<T> filteredElements) {
+    public FilterController(FilteredElementsModel<T> filteredElements, Filter<T, K> filter) {
         this.filteredElements = filteredElements;
         this.elements = new ArrayList<>();
-        this.filter = "";
+        this.filter = filter;
         refreshViewList();
     }
 
     protected void refreshViewList(){
         List<T> filteredElements = new ArrayList<>();
         for(T e : this.elements){
-            if(e.contains(this.filter)) {
+            if(!this.filter.isFiltered(e)) {
                 filteredElements.add(e);
             }
         }
@@ -26,8 +26,8 @@ public class FilterController<T extends Filterable> implements SearchViewObserve
     }
 
     @Override
-    public void filterChanged(String filter) {
-        this.filter = filter;
+    public void filterChanged(K filter) {
+        this.filter.setFilterElement(filter);
         refreshViewList();
     }
 

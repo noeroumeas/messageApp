@@ -4,11 +4,10 @@ import main.java.com.ubo.tp.message.core.database.IDatabaseObserver;
 import main.java.com.ubo.tp.message.datamodel.Message;
 import main.java.com.ubo.tp.message.datamodel.User;
 import main.java.com.ubo.tp.message.filter.UnfilteredElementsModel;
-import main.java.com.ubo.tp.message.utils.UserWrapper;
 
 public class UserListController implements IDatabaseObserver {
-    protected UnfilteredElementsModel<UserFilterable> unfilteredUsers;
-    public UserListController(UnfilteredElementsModel<UserFilterable> unfilteredUsers) {
+    protected UnfilteredElementsModel<User> unfilteredUsers;
+    public UserListController(UnfilteredElementsModel<User> unfilteredUsers) {
         this.unfilteredUsers = unfilteredUsers;
     }
 
@@ -29,7 +28,7 @@ public class UserListController implements IDatabaseObserver {
 
     @Override
     public void notifyUserAdded(User addedUser) {
-        this.unfilteredUsers.add(UserWrapper.userToUserFilterable(addedUser));
+        this.unfilteredUsers.add(addedUser);
     }
 
     @Override

@@ -4,10 +4,9 @@ import main.java.com.ubo.tp.message.common.Constants;
 import main.java.com.ubo.tp.message.datamodel.jaxb.bean.message.MessageXml;
 import main.java.com.ubo.tp.message.datamodel.jaxb.bean.user.UserXml;
 
-import java.io.FileReader;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
+import java.io.FileReader;
 
 /**
  * Classe de lecture des fichiers XML.

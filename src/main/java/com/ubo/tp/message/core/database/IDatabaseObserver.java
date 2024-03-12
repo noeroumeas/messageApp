@@ -3,8 +3,6 @@ package main.java.com.ubo.tp.message.core.database;
 import main.java.com.ubo.tp.message.datamodel.Message;
 import main.java.com.ubo.tp.message.datamodel.User;
 
-import java.awt.*;
-
 /**
  * Interface des observateurs des modifications de la base de données.
  *

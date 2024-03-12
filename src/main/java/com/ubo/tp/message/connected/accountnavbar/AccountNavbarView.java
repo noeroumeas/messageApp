@@ -3,17 +3,19 @@ package main.java.com.ubo.tp.message.connected.accountnavbar;
 import main.java.com.ubo.tp.message.connected.NavigatorObserver;
 import main.java.com.ubo.tp.message.datamodel.User;
 import main.java.com.ubo.tp.message.ihm.session.ISessionObserver;
+import main.java.com.ubo.tp.message.utils.ImagePanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.util.ArrayList;
 
 public class AccountNavbarView extends JPanel implements ISessionObserver {
     protected ArrayList<AccountNavbarViewObserver> observers;
-    protected ImageIcon avatar;
-    protected JLabel nameAndTagAndAvatar;
+    protected JPanel avatar;
+    protected JLabel nameAndTag;
     public AccountNavbarView(){
         super(new GridBagLayout());
         this.observers = new ArrayList<>();
@@ -29,18 +31,20 @@ public class AccountNavbarView extends JPanel implements ISessionObserver {
     }
 
     protected void initAccountInfo() {
-
-        this.avatar = new ImageIcon();
-        this.nameAndTagAndAvatar = new JLabel("", avatar, JLabel.CENTER);
-        nameAndTagAndAvatar.addMouseListener(new MouseAdapter() {
+        this.nameAndTag = new JLabel("", JLabel.CENTER);
+        this.nameAndTag.setFont(new Font("Arial", Font.PLAIN, 18));
+        this.nameAndTag.setMaximumSize(new Dimension(10000, 60));
+        nameAndTag.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 notifySwitchMyProfile();
             }
         });
+        this.avatar = new JPanel(new GridBagLayout());
 
-        this.add(nameAndTagAndAvatar, new GridBagConstraints(0, 0, 1, 1, 2, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(10,0,10,0), 0, 0));
+        this.add(nameAndTag, new GridBagConstraints(1, 0, 1, 1, 2, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(10,0,10,0), 0, 0));
+        this.add(avatar, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(10,0,10,0), 0, 0));
     }
 
     @Override
@@ -48,10 +52,12 @@ public class AccountNavbarView extends JPanel implements ISessionObserver {
         this.refreshAccountInfo(u);
     }
     protected void refreshAccountInfo(User u){
-        ImageIcon avatar = new ImageIcon(u.getAvatarPath());
-        this.avatar.setImage(avatar.getImage());
+        File avatarFile = new File(u.getAvatarPath());
+        JPanel avatarPanel = new ImagePanel(avatarFile, new Dimension(50,50));
+        this.avatar.removeAll();
+        this.avatar.add(avatarPanel, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
 
-        this.nameAndTagAndAvatar.setText("<html>" + u.getName() + "<br>" + u.getUserTag() + "</html>");
+        this.nameAndTag.setText("<html>" + u.getName() + "<br>" + u.getUserTag() + "</html>");
         this.revalidate();
         this.repaint();
     }

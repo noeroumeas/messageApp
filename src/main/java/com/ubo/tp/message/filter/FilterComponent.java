@@ -1,17 +1,16 @@
 package main.java.com.ubo.tp.message.filter;
 
-import java.util.List;
 
-public class FilterComponent<T extends Filterable> {
+public class FilterComponent<T, K> {
     protected FilteredElementsModel<T> filteredElementsModel;
-    protected FilterController<T> filterController;
+    protected FilterController<T, K> filterController;
     protected SearchView<T> searchView;
 
     protected UnfilteredElementsModel<T> unfilteredElementsModel;
-    public FilterComponent(SearchView<T> searchView){
+    public FilterComponent(SearchView<T> searchView, Filter<T, K> filter){
         this.filteredElementsModel = new FilteredElementsModel<>();
         this.unfilteredElementsModel = new UnfilteredElementsModel<>();
-        this.filterController = new FilterController<>(this.filteredElementsModel);
+        this.filterController = new FilterController<>(this.filteredElementsModel, filter);
         this.unfilteredElementsModel.addObserver(filterController);
         this.searchView = searchView;
         searchView.addObserver(filterController);
@@ -21,7 +20,7 @@ public class FilterComponent<T extends Filterable> {
         return filteredElementsModel;
     }
 
-    public FilterController<T> getFilterController() {
+    public FilterController<T, K> getFilterController() {
         return filterController;
     }
 

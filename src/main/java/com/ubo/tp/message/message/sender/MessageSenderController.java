@@ -1,7 +1,6 @@
 package main.java.com.ubo.tp.message.message.sender;
 
 import main.java.com.ubo.tp.message.core.EntityManager;
-import main.java.com.ubo.tp.message.core.database.IDatabase;
 import main.java.com.ubo.tp.message.datamodel.Message;
 import main.java.com.ubo.tp.message.ihm.session.ISession;
 

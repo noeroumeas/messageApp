@@ -1,9 +1,9 @@
 package main.java.com.ubo.tp.message.ihm.session;
 
+import main.java.com.ubo.tp.message.datamodel.User;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import main.java.com.ubo.tp.message.datamodel.User;
 
 /**
  * Session de l'application.

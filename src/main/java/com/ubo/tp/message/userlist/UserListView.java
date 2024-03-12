@@ -9,17 +9,17 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserListView extends JPanel implements NavigatorObserver, FilterElementsModelObserver<UserFilterable> {
+public class UserListView extends JPanel implements NavigatorObserver, FilterElementsModelObserver<User> {
     protected int userListSize;
     protected JPanel userList;
 
     protected List<UserListViewObserver> observers;
-    public UserListView(List<UserFilterable> users){
+    public UserListView(List<User> users){
         super(new GridBagLayout());
         this.observers = new ArrayList<>();
         this.initUserViewList(users);
     }
-    protected void initUserViewList(List<UserFilterable> users){
+    protected void initUserViewList(List<User> users){
 
         this.userList = new JPanel(new GridBagLayout());
         JScrollPane userListScrollPane = new JScrollPane(this.userList);
@@ -28,10 +28,10 @@ public class UserListView extends JPanel implements NavigatorObserver, FilterEle
         refreshViewList(users);
     }
 
-    protected void refreshViewList(List<UserFilterable> users){
+    protected void refreshViewList(List<User> users){
         this.userListSize = 0;
         this.userList.removeAll();
-        for(UserFilterable u : users){
+        for(User u : users){
             this.addUserViewToList(u);
         }
 
@@ -39,7 +39,7 @@ public class UserListView extends JPanel implements NavigatorObserver, FilterEle
         this.userList.repaint();
     }
 
-    protected void addUserViewToList(UserFilterable u){
+    protected void addUserViewToList(User u){
         UserView userView = new UserView(u);
         userView.addObserver(this);
         this.userList.add(userView, new GridBagConstraints(0, this.userListSize++, 1, 1, 1, 0, GridBagConstraints.WEST, GridBagConstraints.HORIZONTAL, new Insets(5,0,5,0), 0, 0));
@@ -66,17 +66,17 @@ public class UserListView extends JPanel implements NavigatorObserver, FilterEle
     }
 
     @Override
-    public void elementsChanged(List<UserFilterable> users) {
+    public void elementsChanged(List<User> users) {
         this.refreshViewList(users);
     }
 
     @Override
-    public void elementAdded(UserFilterable u) {
+    public void elementAdded(User u) {
         this.addUserViewToList(u);
     }
 
     @Override
-    public void elementRemoved(UserFilterable u) {
+    public void elementRemoved(User u) {
 
     }
 }

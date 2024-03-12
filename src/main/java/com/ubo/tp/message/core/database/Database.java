@@ -1,11 +1,11 @@
 package main.java.com.ubo.tp.message.core.database;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import main.java.com.ubo.tp.message.common.Constants;
 import main.java.com.ubo.tp.message.datamodel.Message;
 import main.java.com.ubo.tp.message.datamodel.User;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Classe représentant les donénes chargées dans l'application.
