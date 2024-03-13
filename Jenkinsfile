@@ -2,11 +2,11 @@
 pipeline {
     agent { docker { image 'maven:3.9.6-eclipse-temurin-8-alpine' } }
     stages {
-        stage('SCM') {
+        /* stage('SCM') {
             steps {
                 checkout scm
             }
-        }
+        } */
         stage('build') {
             steps {
                 sh 'ls a'
