@@ -7,7 +7,7 @@ import java.io.File;
 public class FileChooser {
     protected JFileChooser fileChooser;
     public FileChooser(){
-        JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView());
+        JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         this.fileChooser = fileChooser;
     }
