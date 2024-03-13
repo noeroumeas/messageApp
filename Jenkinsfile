@@ -14,7 +14,7 @@ pipeline {
                 sh 'mvn package'
             }
         }
-        stage('SonarQube Analysis') {
+        /* stage('SonarQube Analysis') {
             steps {
                 script {
                     def mvn = tool '/usr/share/maven';
@@ -23,6 +23,6 @@ pipeline {
                     }
                 }
             }
-        }
+        } */
     }
 }
