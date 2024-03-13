@@ -1,6 +1,6 @@
-package main.java.com.ubo.tp.message.message;
+package com.ubo.tp.message.message;
 
-import main.java.com.ubo.tp.message.datamodel.Message;
+import com.ubo.tp.message.datamodel.Message;
 
 import java.util.ArrayList;
 import java.util.List;

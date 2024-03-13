@@ -1,4 +1,4 @@
-package main.java.com.ubo.tp.message.filter;
+package com.ubo.tp.message.filter;
 
 import java.util.ArrayList;
 import java.util.List;

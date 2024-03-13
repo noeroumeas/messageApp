@@ -1,8 +1,8 @@
-package main.java.com.ubo.tp.message.connected.accountnavbar;
+package com.ubo.tp.message.connected.accountnavbar;
 
-import main.java.com.ubo.tp.message.connected.NavigatorObserver;
-import main.java.com.ubo.tp.message.datamodel.User;
-import main.java.com.ubo.tp.message.ihm.session.ISession;
+import com.ubo.tp.message.connected.NavigatorObserver;
+import com.ubo.tp.message.datamodel.User;
+import com.ubo.tp.message.ihm.session.ISession;
 
 import javax.swing.*;
 import java.awt.*;

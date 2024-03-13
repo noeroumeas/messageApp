@@ -1,8 +1,8 @@
-package main.java.com.ubo.tp.message.userlist;
+package com.ubo.tp.message.userlist;
 
-import main.java.com.ubo.tp.message.connected.NavigatorObserver;
-import main.java.com.ubo.tp.message.datamodel.User;
-import main.java.com.ubo.tp.message.utils.ImagePanel;
+import com.ubo.tp.message.connected.NavigatorObserver;
+import com.ubo.tp.message.datamodel.User;
+import com.ubo.tp.message.utils.ImagePanel;
 
 import javax.swing.*;
 import java.awt.*;

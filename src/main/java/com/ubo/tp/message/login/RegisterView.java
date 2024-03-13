@@ -1,4 +1,4 @@
-package main.java.com.ubo.tp.message.login;
+package com.ubo.tp.message.login;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

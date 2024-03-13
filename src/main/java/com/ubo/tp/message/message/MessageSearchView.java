@@ -1,7 +1,7 @@
-package main.java.com.ubo.tp.message.message;
+package com.ubo.tp.message.message;
 
-import main.java.com.ubo.tp.message.datamodel.Message;
-import main.java.com.ubo.tp.message.filter.SearchView;
+import com.ubo.tp.message.datamodel.Message;
+import com.ubo.tp.message.filter.SearchView;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;

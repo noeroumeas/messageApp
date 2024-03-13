@@ -1,9 +1,9 @@
-package main.java.com.ubo.tp.message.userlist;
+package com.ubo.tp.message.userlist;
 
-import main.java.com.ubo.tp.message.core.database.IDatabaseObserver;
-import main.java.com.ubo.tp.message.datamodel.Message;
-import main.java.com.ubo.tp.message.datamodel.User;
-import main.java.com.ubo.tp.message.filter.UnfilteredElementsModel;
+import com.ubo.tp.message.core.database.IDatabaseObserver;
+import com.ubo.tp.message.datamodel.Message;
+import com.ubo.tp.message.datamodel.User;
+import com.ubo.tp.message.filter.UnfilteredElementsModel;
 
 public class UserListController implements IDatabaseObserver {
     protected UnfilteredElementsModel<User> unfilteredUsers;

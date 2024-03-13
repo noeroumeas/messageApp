@@ -1,9 +1,9 @@
-package main.java.com.ubo.tp.message.message;
+package com.ubo.tp.message.message;
 
-import main.java.com.ubo.tp.message.core.database.IDatabaseObserver;
-import main.java.com.ubo.tp.message.datamodel.Message;
-import main.java.com.ubo.tp.message.datamodel.User;
-import main.java.com.ubo.tp.message.filter.UnfilteredElementsModel;
+import com.ubo.tp.message.core.database.IDatabaseObserver;
+import com.ubo.tp.message.datamodel.Message;
+import com.ubo.tp.message.datamodel.User;
+import com.ubo.tp.message.filter.UnfilteredElementsModel;
 
 import java.util.ArrayList;
 import java.util.List;

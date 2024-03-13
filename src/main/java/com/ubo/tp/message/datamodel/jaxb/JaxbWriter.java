@@ -1,8 +1,8 @@
-package main.java.com.ubo.tp.message.datamodel.jaxb;
+package com.ubo.tp.message.datamodel.jaxb;
 
-import main.java.com.ubo.tp.message.common.FilesUtils;
-import main.java.com.ubo.tp.message.datamodel.jaxb.bean.message.MessageXml;
-import main.java.com.ubo.tp.message.datamodel.jaxb.bean.user.UserXml;
+import com.ubo.tp.message.common.FilesUtils;
+import com.ubo.tp.message.datamodel.jaxb.bean.message.MessageXml;
+import com.ubo.tp.message.datamodel.jaxb.bean.user.UserXml;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;

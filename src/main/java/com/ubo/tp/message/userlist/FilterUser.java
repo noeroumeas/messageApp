@@ -1,7 +1,7 @@
-package main.java.com.ubo.tp.message.userlist;
+package com.ubo.tp.message.userlist;
 
-import main.java.com.ubo.tp.message.datamodel.User;
-import main.java.com.ubo.tp.message.filter.Filter;
+import com.ubo.tp.message.datamodel.User;
+import com.ubo.tp.message.filter.Filter;
 
 public class FilterUser extends Filter<User, String> {
     public FilterUser(String filterElement) {

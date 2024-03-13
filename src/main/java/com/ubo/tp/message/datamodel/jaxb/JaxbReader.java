@@ -1,8 +1,8 @@
-package main.java.com.ubo.tp.message.datamodel.jaxb;
+package com.ubo.tp.message.datamodel.jaxb;
 
-import main.java.com.ubo.tp.message.common.Constants;
-import main.java.com.ubo.tp.message.datamodel.jaxb.bean.message.MessageXml;
-import main.java.com.ubo.tp.message.datamodel.jaxb.bean.user.UserXml;
+import com.ubo.tp.message.common.Constants;
+import com.ubo.tp.message.datamodel.jaxb.bean.message.MessageXml;
+import com.ubo.tp.message.datamodel.jaxb.bean.user.UserXml;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
@@ -15,7 +15,7 @@ import java.io.FileReader;
  */
 public class JaxbReader {
 
-	protected static final String JAXB_BEAN_ROOT_PACKAGE = "main.java.com.ubo.tp.message.datamodel.jaxb.bean";
+	protected static final String JAXB_BEAN_ROOT_PACKAGE = "com.ubo.tp.message.datamodel.jaxb.bean";
 
 	protected static final String JAXB_TWIT_BEAN_PACKAGE = JAXB_BEAN_ROOT_PACKAGE + "." + "message";
 

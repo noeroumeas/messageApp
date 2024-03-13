@@ -1,13 +1,13 @@
-package main.java.com.ubo.tp.message.message;
+package com.ubo.tp.message.message;
 
-import main.java.com.ubo.tp.message.core.EntityManager;
-import main.java.com.ubo.tp.message.core.database.IDatabase;
-import main.java.com.ubo.tp.message.datamodel.Message;
-import main.java.com.ubo.tp.message.filter.FilterComponent;
-import main.java.com.ubo.tp.message.filter.FilteredElementsModel;
-import main.java.com.ubo.tp.message.filter.UnfilteredElementsModel;
-import main.java.com.ubo.tp.message.ihm.session.ISession;
-import main.java.com.ubo.tp.message.message.sender.MessageSenderComponent;
+import com.ubo.tp.message.core.EntityManager;
+import com.ubo.tp.message.core.database.IDatabase;
+import com.ubo.tp.message.datamodel.Message;
+import com.ubo.tp.message.filter.FilterComponent;
+import com.ubo.tp.message.filter.FilteredElementsModel;
+import com.ubo.tp.message.filter.UnfilteredElementsModel;
+import com.ubo.tp.message.ihm.session.ISession;
+import com.ubo.tp.message.message.sender.MessageSenderComponent;
 
 import javax.swing.*;
 import java.awt.*;

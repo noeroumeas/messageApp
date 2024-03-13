@@ -1,12 +1,12 @@
-package main.java.com.ubo.tp.message.connected;
+package com.ubo.tp.message.connected;
 
-import main.java.com.ubo.tp.message.connected.accountnavbar.AccountNavbarComponent;
-import main.java.com.ubo.tp.message.core.EntityManager;
-import main.java.com.ubo.tp.message.core.database.IDatabase;
-import main.java.com.ubo.tp.message.datamodel.User;
-import main.java.com.ubo.tp.message.ihm.session.ISession;
-import main.java.com.ubo.tp.message.message.MessagingComponent;
-import main.java.com.ubo.tp.message.userlist.UserListComponent;
+import com.ubo.tp.message.connected.accountnavbar.AccountNavbarComponent;
+import com.ubo.tp.message.core.EntityManager;
+import com.ubo.tp.message.core.database.IDatabase;
+import com.ubo.tp.message.datamodel.User;
+import com.ubo.tp.message.ihm.session.ISession;
+import com.ubo.tp.message.message.MessagingComponent;
+import com.ubo.tp.message.userlist.UserListComponent;
 
 import javax.swing.*;
 import java.awt.*;

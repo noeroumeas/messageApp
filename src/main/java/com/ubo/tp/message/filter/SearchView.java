@@ -1,4 +1,4 @@
-package main.java.com.ubo.tp.message.filter;
+package com.ubo.tp.message.filter;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,6 +1,6 @@
-package main.java.com.ubo.tp.message.connected;
+package com.ubo.tp.message.connected;
 
-import main.java.com.ubo.tp.message.datamodel.User;
+import com.ubo.tp.message.datamodel.User;
 
 public interface NavigatorObserver {
     public void switchHome();
