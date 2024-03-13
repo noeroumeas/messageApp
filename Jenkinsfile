@@ -1,25 +1,15 @@
 /* Requires the Docker Pipeline plugin */
-pipeline {
-    agent { docker { image 'maven:3.6.3-jdk-8' } }
-    stages {
-        stage('SCM') {
-            steps {
-                checkout scm
-            }
-        }
-        stage('SonarQube Analysis') {
-            steps {
-                script {
-                    def mvn = tool 'maven';
-                    withSonarQubeEnv() {
-                        sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=messageApp"
-                    }
-                }
-            }
-        }
+node {
+  stage('SCM') {
+    checkout scm
+  }
+  stage('SonarQube Analysis') {
+    def mvn = tool 'maven';
+    withSonarQubeEnv() {
+      sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=messageApp"
     }
+  }
 }
-
 /* pipeline {
     agent { docker { image 'maven:3.9.6-eclipse-temurin-8-alpine' } }
     stages {
