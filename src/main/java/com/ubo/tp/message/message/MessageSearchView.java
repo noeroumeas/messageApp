@@ -8,7 +8,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
 
-public class MessageSearchView extends SearchView<Message> {
+public class MessageSearchView extends SearchView<Message, String> {
     public MessageSearchView() {
         super(new GridBagLayout());
         this.initUserSearchBar();

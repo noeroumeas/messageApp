@@ -5,7 +5,6 @@ import com.ubo.tp.message.datamodel.Message;
 import com.ubo.tp.message.datamodel.User;
 import com.ubo.tp.message.filter.UnfilteredElementsModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MessagesController implements IDatabaseObserver {

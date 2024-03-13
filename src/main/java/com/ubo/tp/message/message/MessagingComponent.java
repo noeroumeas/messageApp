@@ -11,7 +11,6 @@ import com.ubo.tp.message.message.sender.MessageSenderComponent;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 public class MessagingComponent extends JPanel {
 
