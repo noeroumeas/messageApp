@@ -1,5 +1,5 @@
 /* Requires the Docker Pipeline plugin */
-/* pipeline {
+node {
     agent { docker { image 'maven:3.9.6-amazoncorretto-8-debian' } }
     stages {
         stage('build') {
@@ -9,10 +9,7 @@
             }
         }
     }
-}
- */
-node {
-  stage('SCM') {
+    stage('SCM') {
     checkout scm
   }
   stage('SonarQube Analysis') {
