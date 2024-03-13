@@ -3,6 +3,7 @@ package main.java.com.ubo.tp.message.filter;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class FilteredElementsModel<T> {
     protected List<FilterElementsModelObserver<T>> observers;
     protected List<T> elements;

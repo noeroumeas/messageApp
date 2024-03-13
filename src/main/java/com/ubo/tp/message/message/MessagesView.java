@@ -5,12 +5,14 @@ import main.java.com.ubo.tp.message.filter.FilterElementsModelObserver;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.util.List;
 
 public class MessagesView extends JPanel implements FilterElementsModelObserver<Message> {
     protected JPanel messageList;
     protected int messagesNumber;
+    protected JScrollBar messagesScrollBar;
     public MessagesView(){
         super(new GridBagLayout());
         initMessageViewList();
@@ -18,8 +20,30 @@ public class MessagesView extends JPanel implements FilterElementsModelObserver<
     protected void initMessageViewList(){
         this.messageList = new JPanel(new GridBagLayout());
         JScrollPane messageListScrollPane = new JScrollPane(this.messageList);
-        messageListScrollPane.getVerticalScrollBar().setUnitIncrement(10);
+        this.messagesScrollBar = messageListScrollPane.getVerticalScrollBar();
+        this.messagesScrollBar.setUnitIncrement(10);
         this.add(messageListScrollPane, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));
+        this.addComponentListener(new ComponentListener() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                setScrollBarToBottom();
+            }
+
+            @Override
+            public void componentMoved(ComponentEvent e) {
+
+            }
+
+            @Override
+            public void componentShown(ComponentEvent e) {
+                setScrollBarToBottom();
+            }
+
+            @Override
+            public void componentHidden(ComponentEvent e) {
+
+            }
+        });
     }
 
     protected void refreshViewList(List<Message> messages){
@@ -40,12 +64,20 @@ public class MessagesView extends JPanel implements FilterElementsModelObserver<
     @Override
     public void elementsChanged(List<Message> messages) {
         this.refreshViewList(messages);
+        setScrollBarToBottom();
     }
 
     @Override
     public void elementAdded(Message m) {
         this.addMessageToList(this.messagesNumber, m);
+        setScrollBarToBottom();
+    }
 
+    protected void setScrollBarToBottom(){
+        Runnable runnable = () -> {
+            messagesScrollBar.setValue(messagesScrollBar.getMaximum());
+        };
+        SwingUtilities.invokeLater(runnable);
     }
 
     @Override

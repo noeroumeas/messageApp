@@ -48,13 +48,14 @@ public class LoginController implements LoginViewObserver, RegisterViewObserver 
     /**
      * Gestion de l'evenement de login emit par la vue login
      * @param tag
-     * @param name
+     * @param password
      */
     @Override
-    public void login(String tag, String name) {
+    public void login(String tag, String password) {
         Set<User> users = this.database.getUsers();
+
         for(User u : users){
-            if(u.getUserTag().equals(tag) && u.getName().equals(name)){
+            if(u.getUserTag().equals(tag) && u.getUserPassword().equals(password)){
                 session.connect(u);
                 return;
             }
@@ -89,16 +90,20 @@ public class LoginController implements LoginViewObserver, RegisterViewObserver 
 
     /**
      * Gerer l'evenement register, enregistrement dans la base de donnée si tag et nom non vides et tag non existant
+     *
      * @param name
      * @param tag
+     * @param password
+     * @param password2
      * @param avatarPath
      */
     @Override
-    public void register(String name, String tag, String avatarPath) {
-        RegisterError registerError = isRegisterValid(name, tag, avatarPath);
+    public void register(String name, String tag, String password, String password2, String avatarPath) {
+        RegisterError registerError = isRegisterValid(name, tag, password, password2, avatarPath);
+        String path = avatarPath == null ? "src/main/resources/images/logo_50.png" : avatarPath;
         if(registerError == RegisterError.VALID){
             UUID userUUID = UUID.randomUUID();
-            User newUser = new User(userUUID, tag, "test", name, new HashSet<>(), avatarPath);
+            User newUser = new User(userUUID, tag, password, name, new HashSet<>(), path);
             this.entityManager.writeUserFile(newUser);
             this.registerView.displayMessage(registerError);
             this.switchToLogin();
@@ -109,14 +114,20 @@ public class LoginController implements LoginViewObserver, RegisterViewObserver 
 
     /**
      * Verifie la validité des champs name, tag et avatarPath
+     *
      * @param name
      * @param tag
-     * @param avatarPath
+     * @param password
+     * @param password2
+     * @param path
      * @return
      */
-    protected RegisterError isRegisterValid(String name, String tag, String avatarPath){
+    protected RegisterError isRegisterValid(String name, String tag, String password, String password2, String path){
         Boolean isTagEmpty = tag.isEmpty();
         Boolean isNameEmpty = name.isEmpty();
+        if(!password.equals(password2)){
+            return RegisterError.PASSWORD_NOT_SAME;
+        }
         if(isTagEmpty && isNameEmpty){
             return RegisterError.TAG_AND_NAME_EMPTY;
         }
@@ -126,13 +137,11 @@ public class LoginController implements LoginViewObserver, RegisterViewObserver 
         }
         if(isNameEmpty){
             return RegisterError.NAME_EMPTY;
-
         }
         Set<User> users = this.database.getUsers();
         for(User u : users){
             if(u.getUserTag().equals(tag)){
                 return RegisterError.TAG_ALREADY_USED;
-
             }
         }
         return RegisterError.VALID;

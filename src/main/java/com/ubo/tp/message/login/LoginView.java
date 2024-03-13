@@ -11,28 +11,13 @@ public class LoginView extends JPanel {
      * Observateurs de la vue
      */
     protected ArrayList<LoginViewObserver> observers = new ArrayList<>();
-    protected JTextField nameTextField;
+    protected JPasswordField passwordTextField;
     protected JTextField tagTextField;
     public LoginView(){
         super(new GridBagLayout());
-        this.initNameElements();
         this.initTagElements();
+        this.initPasswordElements();
         this.initButtons();
-    }
-
-    /**
-     * Initialiser les elements lies au nom
-     */
-    protected void initNameElements(){
-        Dimension textFieldDimensions = new Dimension(100,30);
-
-        JLabel nameLabel = new JLabel("Nom : ");
-        JTextField nameTextField = new JTextField("testName",20);
-        nameTextField.setSize(textFieldDimensions);
-
-        this.add(nameLabel, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
-        this.add(nameTextField, new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
-        this.nameTextField = nameTextField;
     }
 
     /**
@@ -42,12 +27,27 @@ public class LoginView extends JPanel {
         Dimension textFieldDimensions = new Dimension(100,30);
 
         JLabel tagLabel = new JLabel("Tag : ");
-        JTextField tagTextField = new JTextField("testTag",20);
+        JTextField tagTextField = new JTextField("test",20);
         tagTextField.setSize(textFieldDimensions);
 
-        this.add(tagLabel, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
-        this.add(tagTextField, new GridBagConstraints(1, 1, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
+        this.add(tagLabel, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
+        this.add(tagTextField, new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
         this.tagTextField = tagTextField;
+    }
+
+    /**
+     * Initialiser les elements lies au nom
+     */
+    protected void initPasswordElements(){
+        Dimension textFieldDimensions = new Dimension(100,30);
+
+        JLabel passwordLabel = new JLabel("Password : ");
+        JPasswordField passwordTextField = new JPasswordField("test",20);
+        passwordTextField.setSize(textFieldDimensions);
+
+        this.add(passwordLabel, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
+        this.add(passwordTextField, new GridBagConstraints(1, 1, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
+        this.passwordTextField = passwordTextField;
     }
 
     /**
@@ -67,7 +67,7 @@ public class LoginView extends JPanel {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                notifyLogin(tagTextField.getText(), nameTextField.getText());
+                notifyLogin(tagTextField.getText(), new String(passwordTextField.getPassword()));
             }
         });
 
@@ -99,11 +99,11 @@ public class LoginView extends JPanel {
     /**
      * Emmetre un évenement de connexion
      * @param tag
-     * @param name
+     * @param password
      */
-    protected void notifyLogin(String tag, String name){
+    protected void notifyLogin(String tag, String password){
         for(LoginViewObserver o : observers){
-            o.login(tag, name);
+            o.login(tag, password);
         }
     }
 }

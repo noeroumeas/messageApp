@@ -5,5 +5,5 @@ public enum RegisterError {
     TAG_EMPTY,
     NAME_EMPTY,
     TAG_AND_NAME_EMPTY,
-    TAG_ALREADY_USED
+    PASSWORD_NOT_SAME, TAG_ALREADY_USED
 }

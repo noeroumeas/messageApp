@@ -16,11 +16,19 @@ public class AccountNavbarView extends JPanel implements ISessionObserver {
     protected ArrayList<AccountNavbarViewObserver> observers;
     protected JPanel avatar;
     protected JLabel nameAndTag;
+
     public AccountNavbarView(){
         super(new GridBagLayout());
         this.observers = new ArrayList<>();
         this.initDisconnectButton();
         this.initAccountInfo();
+        this.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                notifySwitchMyProfile();
+            }
+        });
     }
 
     protected void initDisconnectButton() {
@@ -34,13 +42,6 @@ public class AccountNavbarView extends JPanel implements ISessionObserver {
         this.nameAndTag = new JLabel("", JLabel.CENTER);
         this.nameAndTag.setFont(new Font("Arial", Font.PLAIN, 18));
         this.nameAndTag.setMaximumSize(new Dimension(10000, 60));
-        nameAndTag.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                notifySwitchMyProfile();
-            }
-        });
         this.avatar = new JPanel(new GridBagLayout());
 
         this.add(nameAndTag, new GridBagConstraints(1, 0, 1, 1, 2, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(10,0,10,0), 0, 0));

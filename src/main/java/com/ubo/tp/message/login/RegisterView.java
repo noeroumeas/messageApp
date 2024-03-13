@@ -21,6 +21,10 @@ public class RegisterView extends JPanel {
 
     protected JTextField nameTextField;
 
+    protected JPasswordField passwordTextField;
+    protected JPasswordField password2TextField;
+
+
     /**
      * chemin d'acces de l'avatar selectionne par l'utilisateur
      */
@@ -29,6 +33,7 @@ public class RegisterView extends JPanel {
         super(new GridBagLayout());
         this.initNameElements();
         this.initTagElements();
+        this.initPasswordElements();
         this.initAvatarElements();
         this.initButtons();
     }
@@ -65,6 +70,26 @@ public class RegisterView extends JPanel {
         this.tagTextField = tagTextField;
     }
 
+
+    protected void initPasswordElements() {
+        Dimension textFieldDimensions = new Dimension(100,30);
+
+        JLabel passwordLabel = new JLabel("Mot de passe* : ");
+        JPasswordField passwordTextField = new JPasswordField(20);
+        passwordTextField.setSize(textFieldDimensions);
+
+        JLabel password2Label = new JLabel("Confirmer le mot de passe* : ");
+        JPasswordField password2TextField = new JPasswordField(20);
+        passwordTextField.setSize(textFieldDimensions);
+
+        this.add(passwordLabel, new GridBagConstraints(0, 2, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
+        this.add(passwordTextField, new GridBagConstraints(1, 2, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
+        this.passwordTextField = passwordTextField;
+
+        this.add(password2Label, new GridBagConstraints(0, 3, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
+        this.add(password2TextField, new GridBagConstraints(1, 3, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
+        this.password2TextField = password2TextField;
+    }
     /**
      * Initialiser les elements liés à l'avatar
      */
@@ -98,8 +123,8 @@ public class RegisterView extends JPanel {
             }
         });
 
-        this.add(avatarJLabel, new GridBagConstraints(0, 2, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
-        this.add(avatarButtonSelectFile, new GridBagConstraints(1, 2, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
+        this.add(avatarJLabel, new GridBagConstraints(0, 4, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
+        this.add(avatarButtonSelectFile, new GridBagConstraints(1, 4, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
     }
 
     /**
@@ -115,13 +140,16 @@ public class RegisterView extends JPanel {
             }
         });
 
-        registerButton.addActionListener(e -> notifyRegister(nameTextField.getText(), tagTextField.getText(), avatarFilePath));
-        this.add(loginButton, new GridBagConstraints(0, 3, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
-        this.add(registerButton, new GridBagConstraints(1, 3, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
+        registerButton.addActionListener(e -> notifyRegister(nameTextField.getText(), tagTextField.getText(), new String(passwordTextField.getPassword()), new String(password2TextField.getPassword()), avatarFilePath));
+        this.add(loginButton, new GridBagConstraints(0, 5, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
+        this.add(registerButton, new GridBagConstraints(1, 5, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
     }
 
     protected void displayMessage(RegisterError registerResult){
         switch (registerResult){
+            case PASSWORD_NOT_SAME:
+                JOptionPane.showMessageDialog(this, "Les mot de passes ne correspondent pas", "Erreur", JOptionPane.ERROR_MESSAGE);
+                break;
             case TAG_EMPTY:
                 JOptionPane.showMessageDialog(this, "Le tag est obligatoire", "Erreur", JOptionPane.ERROR_MESSAGE);
                 break;
@@ -159,13 +187,15 @@ public class RegisterView extends JPanel {
 
     /**
      * Emettre un evenement register
+     *
      * @param name
      * @param tag
-     * @param avatarPath
+     * @param password
+     * @param avatarFilePath
      */
-    protected void notifyRegister(String name, String tag, String avatarPath){
+    protected void notifyRegister(String name, String tag, String password, String password2, String avatarFilePath){
         for(RegisterViewObserver o : observers){
-            o.register(name, tag, avatarPath);
+            o.register(name, tag, password, password2, avatarFilePath);
         }
     }
 }

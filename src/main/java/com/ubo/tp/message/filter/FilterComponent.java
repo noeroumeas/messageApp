@@ -1,6 +1,11 @@
 package main.java.com.ubo.tp.message.filter;
 
 
+/**
+ * Classe du composant
+ * @param <T> type du modele filtré
+ * @param <K> Type de ce à quoi le modele sera comparé
+ */
 public class FilterComponent<T, K> {
     protected FilteredElementsModel<T> filteredElementsModel;
     protected FilterController<T, K> filterController;

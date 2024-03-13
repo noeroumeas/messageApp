@@ -13,8 +13,10 @@ public class ConnectedComponent extends JPanel implements NavigatorObserver {
     protected MyProfileView myProfileView;
     protected ConnectedHomeView homeView;
     protected UserProfileComponent userProfileComponent;
+    protected ISession session;
     public ConnectedComponent(ISession session, IDatabase db, EntityManager entityManager){
         super(new GridBagLayout());
+        this.session = session;
         this.homeView = new ConnectedHomeView(session, db, entityManager);
         this.homeView.addObserver(this);
         this.myProfileView = new MyProfileView();
@@ -37,6 +39,10 @@ public class ConnectedComponent extends JPanel implements NavigatorObserver {
 
     @Override
     public void switchUserProfile(User u) {
+        if(u.getUserTag().equals(this.session.getConnectedUser().getUserTag())){
+            this.switchMyProfile();
+            return;
+        }
         this.userProfileComponent.setUser(u);
         this.switchView(this.userProfileComponent);
     }
