@@ -4,6 +4,8 @@ pipeline {
     stages {
         stage('build') {
             steps {
+                sh 'mvn compile'
+                sh 'mvn package'
                 sh 'ls'
                 sh 'java -jar target/messageApp-0.1.0.jar'
             }
