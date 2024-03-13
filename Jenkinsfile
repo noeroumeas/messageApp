@@ -1,6 +1,6 @@
 /* Requires the Docker Pipeline plugin */
 pipeline {
-    agent { docker { image 'maven:3.9.6-amazoncorretto-8-debian' } }
+    agent { docker { image 'maven:3.9.6-eclipse-temurin-8-alpine' } }
     stages {
         stage('SCM') {
             steps {
