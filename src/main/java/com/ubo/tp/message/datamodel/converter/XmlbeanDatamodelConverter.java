@@ -1,10 +1,10 @@
-package main.java.com.ubo.tp.message.datamodel.converter;
+package com.ubo.tp.message.datamodel.converter;
 
-import main.java.com.ubo.tp.message.common.Constants;
-import main.java.com.ubo.tp.message.datamodel.Message;
-import main.java.com.ubo.tp.message.datamodel.User;
-import main.java.com.ubo.tp.message.datamodel.jaxb.bean.message.MessageXml;
-import main.java.com.ubo.tp.message.datamodel.jaxb.bean.user.UserXml;
+import com.ubo.tp.message.common.Constants;
+import com.ubo.tp.message.datamodel.Message;
+import com.ubo.tp.message.datamodel.User;
+import com.ubo.tp.message.datamodel.jaxb.bean.message.MessageXml;
+import com.ubo.tp.message.datamodel.jaxb.bean.user.UserXml;
 
 import java.util.HashSet;
 import java.util.Map;

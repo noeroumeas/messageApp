@@ -1,6 +1,6 @@
-package main.java.com.ubo.tp.message.datamodel;
+package com.ubo.tp.message.datamodel;
 
-import main.java.com.ubo.tp.message.common.Constants;
+import com.ubo.tp.message.common.Constants;
 
 import java.util.HashSet;
 import java.util.Set;

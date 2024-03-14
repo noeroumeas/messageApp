@@ -1,6 +1,6 @@
-package main.java.com.ubo.tp.message.message;
+package com.ubo.tp.message.message;
 
-import main.java.com.ubo.tp.message.datamodel.Message;
+import com.ubo.tp.message.datamodel.Message;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,8 +18,8 @@ public class MessageView extends JPanel {
 
     protected void initInfoMessage(Message message) {
         Date date = new Date(message.getEmissionDate());
-        SimpleDateFormat DateFormat = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
-        String dateText = DateFormat.format(date);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+        String dateText = dateFormat.format(date);
         JLabel messageInfoLabel = new JLabel("<html><i><b>@" + message.getSender().getUserTag() + "</b><br>" + dateText + "</i></html>", JLabel.LEFT);
         messageInfoLabel.setFont(new Font("Arial", Font.PLAIN, 12));
         this.add(messageInfoLabel, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));

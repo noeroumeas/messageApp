@@ -1,9 +1,9 @@
-package main.java.com.ubo.tp.message.login;
+package com.ubo.tp.message.login;
 
-import main.java.com.ubo.tp.message.core.EntityManager;
-import main.java.com.ubo.tp.message.core.database.IDatabase;
-import main.java.com.ubo.tp.message.datamodel.User;
-import main.java.com.ubo.tp.message.ihm.session.ISession;
+import com.ubo.tp.message.core.EntityManager;
+import com.ubo.tp.message.core.database.IDatabase;
+import com.ubo.tp.message.datamodel.User;
+import com.ubo.tp.message.ihm.session.ISession;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -100,7 +100,7 @@ public class LoginController implements LoginViewObserver, RegisterViewObserver 
     @Override
     public void register(String name, String tag, String password, String password2, String avatarPath) {
         RegisterError registerError = isRegisterValid(name, tag, password, password2, avatarPath);
-        String path = avatarPath == null ? "src/main/resources/images/logo_50.png" : avatarPath;
+        String path = avatarPath == null ? "/home/noerms/icon.png" : avatarPath;
         if(registerError == RegisterError.VALID){
             UUID userUUID = UUID.randomUUID();
             User newUser = new User(userUUID, tag, password, name, new HashSet<>(), path);
@@ -123,8 +123,8 @@ public class LoginController implements LoginViewObserver, RegisterViewObserver 
      * @return
      */
     protected RegisterError isRegisterValid(String name, String tag, String password, String password2, String path){
-        Boolean isTagEmpty = tag.isEmpty();
-        Boolean isNameEmpty = name.isEmpty();
+        boolean isTagEmpty = tag.isEmpty();
+        boolean isNameEmpty = name.isEmpty();
         if(!password.equals(password2)){
             return RegisterError.PASSWORD_NOT_SAME;
         }

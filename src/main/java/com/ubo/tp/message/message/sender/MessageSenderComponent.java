@@ -1,7 +1,7 @@
-package main.java.com.ubo.tp.message.message.sender;
+package com.ubo.tp.message.message.sender;
 
-import main.java.com.ubo.tp.message.core.EntityManager;
-import main.java.com.ubo.tp.message.ihm.session.ISession;
+import com.ubo.tp.message.core.EntityManager;
+import com.ubo.tp.message.ihm.session.ISession;
 
 public class MessageSenderComponent {
     protected MessageSenderView messageSenderView;

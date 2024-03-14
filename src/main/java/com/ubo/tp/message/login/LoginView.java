@@ -1,4 +1,4 @@
-package main.java.com.ubo.tp.message.login;
+package com.ubo.tp.message.login;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,12 +27,11 @@ public class LoginView extends JPanel {
         Dimension textFieldDimensions = new Dimension(100,30);
 
         JLabel tagLabel = new JLabel("Tag : ");
-        JTextField tagTextField = new JTextField("test",20);
-        tagTextField.setSize(textFieldDimensions);
+        this.tagTextField = new JTextField("testt",20);
+        this.tagTextField.setSize(textFieldDimensions);
 
         this.add(tagLabel, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
-        this.add(tagTextField, new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
-        this.tagTextField = tagTextField;
+        this.add(this.tagTextField, new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
     }
 
     /**
@@ -42,12 +41,11 @@ public class LoginView extends JPanel {
         Dimension textFieldDimensions = new Dimension(100,30);
 
         JLabel passwordLabel = new JLabel("Password : ");
-        JPasswordField passwordTextField = new JPasswordField("test",20);
-        passwordTextField.setSize(textFieldDimensions);
+        this.passwordTextField = new JPasswordField("test",20);
+        this.passwordTextField.setSize(textFieldDimensions);
 
         this.add(passwordLabel, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
-        this.add(passwordTextField, new GridBagConstraints(1, 1, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
-        this.passwordTextField = passwordTextField;
+        this.add(this.passwordTextField, new GridBagConstraints(1, 1, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
     }
 
     /**
@@ -57,19 +55,9 @@ public class LoginView extends JPanel {
         JButton loginButton = new JButton("Se connecter");
         JButton registerButton = new JButton("Pas encore inscrit ?");
 
-        registerButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                notifySwitchToRegister();
-            }
-        });
+        registerButton.addActionListener(e -> notifySwitchToRegister());
 
-        loginButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                notifyLogin(tagTextField.getText(), new String(passwordTextField.getPassword()));
-            }
-        });
+        loginButton.addActionListener(e -> notifyLogin(tagTextField.getText(), new String(passwordTextField.getPassword())));
 
         this.add(registerButton, new GridBagConstraints(0, 2, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));
         this.add(loginButton, new GridBagConstraints(1, 2, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0,0,0,0), 0, 0));

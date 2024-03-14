@@ -1,7 +1,7 @@
-package main.java.com.ubo.tp.message.message;
+package com.ubo.tp.message.message;
 
-import main.java.com.ubo.tp.message.datamodel.Message;
-import main.java.com.ubo.tp.message.filter.Filter;
+import com.ubo.tp.message.datamodel.Message;
+import com.ubo.tp.message.filter.Filter;
 
 public class FilterMessage extends Filter<Message, String> {
     public FilterMessage(String filterElement) {
@@ -19,7 +19,7 @@ public class FilterMessage extends Filter<Message, String> {
             return !(isUserTagMatch || isMessageCitingTagMatch);
         } else if(this.filterElement.charAt(0) == '#'){
             String realFilter = this.filterElement.substring(1);
-            return !element.getTags().stream().anyMatch(e -> e.contains(realFilter));
+            return element.getTags().stream().noneMatch(e -> e.contains(realFilter));
         }
         return !element.getText().contains(this.filterElement);
     }

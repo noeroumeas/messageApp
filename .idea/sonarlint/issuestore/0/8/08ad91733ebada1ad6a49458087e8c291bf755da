@@ -1,0 +1,17 @@
+
+v
+java:S1118":Add a private constructor to hide the implicit public one.(ûë€òJ$4895a515-d161-4a37-aef0-9edf3ece1eeb
+f
+java:S1181"%Catch Exception instead of Throwable.(•”ø¾øÿÿÿÿJ$b586f749-4d31-438f-8a47-5f03b754038f
+e	java:S106"+Replace this use of System.out by a logger.(ôšÀjJ$46a4b123-e19d-44c1-ae24-6cb3a6f2e841
+f	java:S106%"+Replace this use of System.err by a logger.(‰³™ëJ$35118eaf-c07e-4a77-b8ec-616c6a918ad4
+k
+java:S2093"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿJ$55249731-848b-48d9-86d3-f17e84a4f1f7
+f
+java:S1181:"%Catch Exception instead of Throwable.(•”ø¾øÿÿÿÿJ$2e0b4ee5-3b77-4646-8220-a38367fd4a4a
+k	java:S106;"+Replace this use of System.err by a logger.(óÔ¶ôüÿÿÿÿJ$de5a8545-5d56-4dc7-8b6c-9488f4039329
+f
+java:S1181A"%Catch Exception instead of Throwable.(‡˜ÚÚøÿÿÿÿJ$53398371-6b25-4c44-8193-b6b72d039d5c
+f	java:S106B"+Replace this use of System.err by a logger.(‰³™ëJ$ed3d4c75-03ef-4f70-b3eb-fb58cbd3b05c
+k
+java:S20937"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿJ$e55e052c-6d68-4b0a-beb1-9c9915f15245

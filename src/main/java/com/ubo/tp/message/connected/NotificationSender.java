@@ -1,9 +1,9 @@
-package main.java.com.ubo.tp.message.connected;
+package com.ubo.tp.message.connected;
 
-import main.java.com.ubo.tp.message.core.database.IDatabaseObserver;
-import main.java.com.ubo.tp.message.datamodel.Message;
-import main.java.com.ubo.tp.message.datamodel.User;
-import main.java.com.ubo.tp.message.ihm.session.ISessionObserver;
+import com.ubo.tp.message.core.database.IDatabaseObserver;
+import com.ubo.tp.message.datamodel.Message;
+import com.ubo.tp.message.datamodel.User;
+import com.ubo.tp.message.ihm.session.ISessionObserver;
 
 import javax.swing.*;
 import java.awt.*;
@@ -50,21 +50,25 @@ public class NotificationSender implements IDatabaseObserver, ISessionObserver {
 
     @Override
     public void notifyMessageDeleted(Message deletedMessage) {
+        //unused
 
     }
 
     @Override
     public void notifyMessageModified(Message modifiedMessage) {
+        //unused
 
     }
 
     @Override
     public void notifyUserAdded(User addedUser) {
+        //unused
 
     }
 
     @Override
     public void notifyUserDeleted(User deletedUser) {
+        //unused
 
     }
 

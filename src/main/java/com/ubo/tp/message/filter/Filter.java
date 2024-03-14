@@ -1,4 +1,4 @@
-package main.java.com.ubo.tp.message.filter;
+package com.ubo.tp.message.filter;
 
 /**
  * Classe abstraite d'un Filtre
@@ -7,7 +7,7 @@ package main.java.com.ubo.tp.message.filter;
  */
 public abstract class Filter<T, K> {
     protected K filterElement;
-    public Filter(K filterElement){
+    protected Filter(K filterElement){
         this.filterElement = filterElement;
     }
     public abstract boolean isFiltered(T element);

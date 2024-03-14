@@ -1,15 +1,15 @@
-package main.java.com.ubo.tp.message.ihm;
+package com.ubo.tp.message.ihm;
 
-import main.java.com.ubo.tp.message.connected.ConnectedComponent;
-import main.java.com.ubo.tp.message.core.EntityManager;
-import main.java.com.ubo.tp.message.core.database.IDatabase;
-import main.java.com.ubo.tp.message.core.directory.IWatchableDirectory;
-import main.java.com.ubo.tp.message.core.directory.WatchableDirectory;
-import main.java.com.ubo.tp.message.datamodel.User;
-import main.java.com.ubo.tp.message.ihm.session.ISession;
-import main.java.com.ubo.tp.message.ihm.session.ISessionObserver;
-import main.java.com.ubo.tp.message.ihm.session.Session;
-import main.java.com.ubo.tp.message.login.LoginComponent;
+import com.ubo.tp.message.connected.ConnectedComponent;
+import com.ubo.tp.message.core.EntityManager;
+import com.ubo.tp.message.core.database.IDatabase;
+import com.ubo.tp.message.core.directory.IWatchableDirectory;
+import com.ubo.tp.message.core.directory.WatchableDirectory;
+import com.ubo.tp.message.datamodel.User;
+import com.ubo.tp.message.ihm.session.ISession;
+import com.ubo.tp.message.ihm.session.ISessionObserver;
+import com.ubo.tp.message.ihm.session.Session;
+import com.ubo.tp.message.login.LoginComponent;
 
 import javax.swing.*;
 import java.io.File;
@@ -136,8 +136,8 @@ public class MessageApp implements ISessionObserver {
         while(!isValideExchangeDirectory(file)) {
             file = fileChooser.getFolder(null);
         }
-        //this.initDirectory(file.getPath());
-        this.initDirectory("dataSpaceTest");
+        this.initDirectory(file.getPath());
+        //this.initDirectory("dataSpaceTest");
 	}
 
 	/**

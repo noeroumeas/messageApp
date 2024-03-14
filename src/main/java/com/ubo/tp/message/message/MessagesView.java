@@ -1,7 +1,7 @@
-package main.java.com.ubo.tp.message.message;
+package com.ubo.tp.message.message;
 
-import main.java.com.ubo.tp.message.datamodel.Message;
-import main.java.com.ubo.tp.message.filter.FilterElementsModelObserver;
+import com.ubo.tp.message.datamodel.Message;
+import com.ubo.tp.message.filter.FilterElementsModelObserver;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,6 +31,7 @@ public class MessagesView extends JPanel implements FilterElementsModelObserver<
 
             @Override
             public void componentMoved(ComponentEvent e) {
+                //unused
 
             }
 
@@ -41,6 +42,7 @@ public class MessagesView extends JPanel implements FilterElementsModelObserver<
 
             @Override
             public void componentHidden(ComponentEvent e) {
+                //unused
 
             }
         });
@@ -74,14 +76,14 @@ public class MessagesView extends JPanel implements FilterElementsModelObserver<
     }
 
     protected void setScrollBarToBottom(){
-        Runnable runnable = () -> {
-            messagesScrollBar.setValue(messagesScrollBar.getMaximum());
-        };
+        Runnable runnable = () -> messagesScrollBar.setValue(messagesScrollBar.getMaximum());
+
         SwingUtilities.invokeLater(runnable);
     }
 
     @Override
     public void elementRemoved(Message u) {
+        //unused
 
     }
 }

@@ -1,9 +1,9 @@
-package main.java.com.ubo.tp.message.connected.accountnavbar;
+package com.ubo.tp.message.connected.accountnavbar;
 
-import main.java.com.ubo.tp.message.connected.NavigatorObserver;
-import main.java.com.ubo.tp.message.datamodel.User;
-import main.java.com.ubo.tp.message.ihm.session.ISessionObserver;
-import main.java.com.ubo.tp.message.utils.ImagePanel;
+import com.ubo.tp.message.connected.NavigatorObserver;
+import com.ubo.tp.message.datamodel.User;
+import com.ubo.tp.message.ihm.session.ISessionObserver;
+import com.ubo.tp.message.utils.ImagePanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -77,5 +77,7 @@ public class AccountNavbarView extends JPanel implements ISessionObserver {
         }
     }
     @Override
-    public void notifyLogout() {}
+    public void notifyLogout() {
+        //unused
+    }
 }

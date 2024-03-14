@@ -1,9 +1,9 @@
-package main.java.com.ubo.tp.message.connected.userprofile;
+package com.ubo.tp.message.connected.userprofile;
 
-import main.java.com.ubo.tp.message.connected.NavigatorObserver;
-import main.java.com.ubo.tp.message.core.EntityManager;
-import main.java.com.ubo.tp.message.datamodel.User;
-import main.java.com.ubo.tp.message.ihm.session.ISession;
+import com.ubo.tp.message.connected.NavigatorObserver;
+import com.ubo.tp.message.core.EntityManager;
+import com.ubo.tp.message.datamodel.User;
+import com.ubo.tp.message.ihm.session.ISession;
 
 import java.util.ArrayList;
 
@@ -32,12 +32,12 @@ public class UserProfileController implements UserProfileViewObserver{
 
     @Override
     public void switchUserProfile(User user) {
-
+        //unused
     }
 
     @Override
     public void switchMyProfile() {
-
+        //unused
     }
 
     @Override

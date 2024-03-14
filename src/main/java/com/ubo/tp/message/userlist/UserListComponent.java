@@ -1,11 +1,11 @@
-package main.java.com.ubo.tp.message.userlist;
+package com.ubo.tp.message.userlist;
 
-import main.java.com.ubo.tp.message.connected.NavigatorObserver;
-import main.java.com.ubo.tp.message.core.database.IDatabase;
-import main.java.com.ubo.tp.message.datamodel.User;
-import main.java.com.ubo.tp.message.filter.FilterComponent;
-import main.java.com.ubo.tp.message.filter.FilteredElementsModel;
-import main.java.com.ubo.tp.message.filter.UnfilteredElementsModel;
+import com.ubo.tp.message.connected.NavigatorObserver;
+import com.ubo.tp.message.core.database.IDatabase;
+import com.ubo.tp.message.datamodel.User;
+import com.ubo.tp.message.filter.FilterComponent;
+import com.ubo.tp.message.filter.FilteredElementsModel;
+import com.ubo.tp.message.filter.UnfilteredElementsModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,7 +40,7 @@ public class UserListComponent extends JPanel implements UserListViewObserver {
 
     @Override
     public void switchHome() {
-
+        //unused
     }
 
     @Override
@@ -52,6 +52,7 @@ public class UserListComponent extends JPanel implements UserListViewObserver {
 
     @Override
     public void switchMyProfile() {
+        //unused
 
     }
 }

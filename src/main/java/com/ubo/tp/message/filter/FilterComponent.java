@@ -1,4 +1,4 @@
-package main.java.com.ubo.tp.message.filter;
+package com.ubo.tp.message.filter;
 
 
 /**
@@ -9,10 +9,10 @@ package main.java.com.ubo.tp.message.filter;
 public class FilterComponent<T, K> {
     protected FilteredElementsModel<T> filteredElementsModel;
     protected FilterController<T, K> filterController;
-    protected SearchView<T> searchView;
+    protected SearchView<T, K> searchView;
 
     protected UnfilteredElementsModel<T> unfilteredElementsModel;
-    public FilterComponent(SearchView<T> searchView, Filter<T, K> filter){
+    public FilterComponent(SearchView<T, K> searchView, Filter<T, K> filter){
         this.filteredElementsModel = new FilteredElementsModel<>();
         this.unfilteredElementsModel = new UnfilteredElementsModel<>();
         this.filterController = new FilterController<>(this.filteredElementsModel, filter);

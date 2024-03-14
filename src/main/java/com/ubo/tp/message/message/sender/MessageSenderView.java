@@ -1,4 +1,4 @@
-package main.java.com.ubo.tp.message.message.sender;
+package com.ubo.tp.message.message.sender;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,4 +1,4 @@
-package main.java.com.ubo.tp.message.filter;
+package com.ubo.tp.message.filter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,13 +21,13 @@ public class FilterController<T, K> implements SearchViewObserver<K>, FilterElem
     }
 
     protected void refreshViewList(){
-        List<T> filteredElements = new ArrayList<>();
+        List<T> newFilteredElements = new ArrayList<>();
         for(T e : this.elements){
             if(!this.filter.isFiltered(e)) {
-                filteredElements.add(e);
+                newFilteredElements.add(e);
             }
         }
-        this.filteredElements.setElements(filteredElements);
+        this.filteredElements.setElements(newFilteredElements);
     }
 
     @Override

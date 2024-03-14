@@ -1,8 +1,8 @@
-package main.java.com.ubo.tp.message.userlist;
+package com.ubo.tp.message.userlist;
 
-import main.java.com.ubo.tp.message.connected.NavigatorObserver;
-import main.java.com.ubo.tp.message.datamodel.User;
-import main.java.com.ubo.tp.message.filter.FilterElementsModelObserver;
+import com.ubo.tp.message.connected.NavigatorObserver;
+import com.ubo.tp.message.datamodel.User;
+import com.ubo.tp.message.filter.FilterElementsModelObserver;
 
 import javax.swing.*;
 import java.awt.*;
@@ -50,6 +50,7 @@ public class UserListView extends JPanel implements NavigatorObserver, FilterEle
 
     @Override
     public void switchHome() {
+        //unused
 
     }
 
@@ -63,6 +64,7 @@ public class UserListView extends JPanel implements NavigatorObserver, FilterEle
     @Override
     public void switchMyProfile() {
 
+        //unused
     }
 
     @Override
@@ -77,6 +79,7 @@ public class UserListView extends JPanel implements NavigatorObserver, FilterEle
 
     @Override
     public void elementRemoved(User u) {
+        //unused
 
     }
 }

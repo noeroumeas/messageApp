@@ -1,4 +1,4 @@
-package main.java.com.ubo.tp.message.utils;
+package com.ubo.tp.message.utils;
 
 
 import javax.imageio.ImageIO;
