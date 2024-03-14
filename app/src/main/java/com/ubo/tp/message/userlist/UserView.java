@@ -3,6 +3,7 @@ package com.ubo.tp.message.userlist;
 import com.ubo.tp.message.connected.NavigatorObserver;
 import com.ubo.tp.message.datamodel.User;
 import com.ubo.tp.message.utils.ImagePanel;
+import java.io.File;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,10 +23,11 @@ public class UserView extends JPanel {
 
     protected void initUserLabel(User user){
         File avatarFile = new File(user.getAvatarPath());
-        if(avatarFile.exists()) {
-            JPanel avatarPanel = new ImagePanel(avatarFile, new Dimension(50, 50));
-            this.add(avatarPanel, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
+        if(!avatarFile.exists()) {
+            avatarFile = new File("/home/noerms/icon.png");
         }
+        JPanel avatarPanel = new ImagePanel(avatarFile, new Dimension(50, 50));
+        this.add(avatarPanel, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
         JLabel userLabel = new JLabel("<html>" + user.getName() + "<br>" + user.getUserTag() + "</html>", JLabel.CENTER);
 
         this.add(userLabel, new GridBagConstraints(1, 0, 1, 1, 2, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));

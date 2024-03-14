@@ -3,6 +3,7 @@ package com.ubo.tp.message.connected.userprofile;
 import com.ubo.tp.message.connected.NavigatorObserver;
 import com.ubo.tp.message.datamodel.User;
 import com.ubo.tp.message.ihm.session.ISession;
+import java.io.File;
 
 import javax.swing.*;
 import java.awt.*;
@@ -85,7 +86,12 @@ public class UserProfileView extends JPanel implements  UserProfileModelObserver
     }
 
     protected void initAvatar(User user){
-        ImageIcon avatar = new ImageIcon(user.getAvatarPath());
+        String avatarPath = user.getAvatarPath();
+        File avatarFile = new File(avatarPath);
+        if(!avatarFile.exists()) {
+            avatarPath = "/home/noerms/icon.png";
+        }
+        ImageIcon avatar = new ImageIcon(avatarPath);
         JLabel avatarLabel = new JLabel(avatar);
 
         this.add(avatarLabel, new GridBagConstraints(0, 4, 1, 1, 5, 2, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0, 0));

@@ -2,6 +2,7 @@ package com.ubo.tp.message.connected;
 
 import com.ubo.tp.message.datamodel.User;
 import com.ubo.tp.message.ihm.session.ISessionObserver;
+import java.io.File;
 
 import javax.swing.*;
 import java.awt.*;
@@ -41,10 +42,13 @@ public class MyProfileView extends JPanel implements ISessionObserver {
     }
 
     protected void refreshAvatar(User user) {
-        ImageIcon avatar;
 
-        avatar = new ImageIcon(user.getAvatarPath());
-        this.avatar.setIcon(avatar);
+        String avatarPath = user.getAvatarPath();
+        File avatarFile = new File(avatarPath);
+        if(!avatarFile.exists()) {
+            avatarPath = "/home/noerms/icon.png";
+        }
+        this.avatar.setIcon(new ImageIcon(avatarPath));
     }
 
     protected void notifySwitchHome(){

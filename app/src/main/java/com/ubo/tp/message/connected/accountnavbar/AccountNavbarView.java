@@ -58,11 +58,12 @@ public class AccountNavbarView extends JPanel implements ISessionObserver {
     }
     protected void refreshAccountInfo(User u){
         File avatarFile = new File(u.getAvatarPath());
-        if(avatarFile.exists()) {
-            JPanel avatarPanel = new ImagePanel(avatarFile, new Dimension(50, 50));
-            this.avatar.removeAll();
-            this.avatar.add(avatarPanel, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
+        if(!avatarFile.exists()) {
+            avatarFile = new File("/home/noerms/icon.png");
         }
+        JPanel avatarPanel = new ImagePanel(avatarFile, new Dimension(50, 50));
+        this.avatar.removeAll();
+        this.avatar.add(avatarPanel, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
         this.nameAndTag.setText("<html>" + u.getName() + "<br>" + u.getUserTag() + "</html>");
         this.revalidate();
         this.repaint();
