@@ -50,21 +50,25 @@ public class NotificationSender implements IDatabaseObserver, ISessionObserver {
 
     @Override
     public void notifyMessageDeleted(Message deletedMessage) {
+        //unused
 
     }
 
     @Override
     public void notifyMessageModified(Message modifiedMessage) {
+        //unused
 
     }
 
     @Override
     public void notifyUserAdded(User addedUser) {
+        //unused
 
     }
 
     @Override
     public void notifyUserDeleted(User deletedUser) {
+        //unused
 
     }
 

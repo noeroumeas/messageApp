@@ -136,8 +136,8 @@ public class MessageApp implements ISessionObserver {
         while(!isValideExchangeDirectory(file)) {
             file = fileChooser.getFolder(null);
         }
-        //this.initDirectory(file.getPath());
-        this.initDirectory("dataSpaceTest");
+        this.initDirectory(file.getPath());
+        //this.initDirectory("dataSpaceTest");
 	}
 
 	/**

@@ -32,12 +32,12 @@ public class UserProfileController implements UserProfileViewObserver{
 
     @Override
     public void switchUserProfile(User user) {
-
+        //unused
     }
 
     @Override
     public void switchMyProfile() {
-
+        //unused
     }
 
     @Override

@@ -19,7 +19,7 @@ public class FilterMessage extends Filter<Message, String> {
             return !(isUserTagMatch || isMessageCitingTagMatch);
         } else if(this.filterElement.charAt(0) == '#'){
             String realFilter = this.filterElement.substring(1);
-            return !element.getTags().stream().anyMatch(e -> e.contains(realFilter));
+            return element.getTags().stream().noneMatch(e -> e.contains(realFilter));
         }
         return !element.getText().contains(this.filterElement);
     }

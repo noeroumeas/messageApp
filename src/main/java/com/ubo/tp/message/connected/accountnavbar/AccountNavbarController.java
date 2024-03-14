@@ -21,11 +21,13 @@ public class AccountNavbarController implements AccountNavbarViewObserver {
 
     @Override
     public void switchHome() {
+        //unused
 
     }
 
     @Override
     public void switchUserProfile(User user) {
+        //unused
 
     }
 

@@ -7,7 +7,7 @@ import java.util.List;
 
 public abstract class SearchView<T,K> extends JPanel {
     protected List<SearchViewObserver<K>> observers;
-    public SearchView(LayoutManager layout){
+    protected SearchView(LayoutManager layout){
         super(layout);
         this.observers = new ArrayList<>();
     }

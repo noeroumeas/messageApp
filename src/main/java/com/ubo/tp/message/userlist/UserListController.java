@@ -13,16 +13,19 @@ public class UserListController implements IDatabaseObserver {
 
     @Override
     public void notifyMessageAdded(Message addedMessage) {
+        //unused
 
     }
 
     @Override
     public void notifyMessageDeleted(Message deletedMessage) {
+        //unused
 
     }
 
     @Override
     public void notifyMessageModified(Message modifiedMessage) {
+        //unused
 
     }
 
@@ -32,9 +35,14 @@ public class UserListController implements IDatabaseObserver {
     }
 
     @Override
-    public void notifyUserDeleted(User deletedUser) {}
+    public void notifyUserDeleted(User deletedUser) {
+        //unused
+
+    }
 
     @Override
-    public void notifyUserModified(User modifiedUser) {}
+    public void notifyUserModified(User modifiedUser) {
+        //unused
+    }
 
 }

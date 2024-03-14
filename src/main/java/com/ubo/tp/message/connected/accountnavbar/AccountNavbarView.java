@@ -77,5 +77,7 @@ public class AccountNavbarView extends JPanel implements ISessionObserver {
         }
     }
     @Override
-    public void notifyLogout() {}
+    public void notifyLogout() {
+        //unused
+    }
 }

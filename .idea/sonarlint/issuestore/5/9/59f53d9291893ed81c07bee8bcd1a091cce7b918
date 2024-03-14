@@ -1,0 +1,11 @@
+
+u
+java:S1118":Add a private constructor to hide the implicit public one.(ƒýñWJ$af88b930-c2ce-4f5d-9dbc-1b8e1209efe5
+{	java:S899";Do something with the "boolean" value returned by "delete".(§ÙœóýÿÿÿÿJ$b2d0aa7b-2fbe-45f5-a522-cc01a71460df
+
+java:S4042"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(§ÙœóýÿÿÿÿJ$3f374461-ace9-4c0f-b18d-4bf9ca5e40dd
+f
+java:S1181="%Catch Exception instead of Throwable.(•”ø¾øÿÿÿÿJ$30970f8b-ecdb-4704-bfd7-0898a7812e0d
+f	java:S106>"+Replace this use of System.err by a logger.(·Œ¶ÔJ$18182850-5170-4209-b7ac-ee92872734e7
+k
+java:S20932"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿJ$a653a787-0ded-42a4-ba80-c37b3444dac9

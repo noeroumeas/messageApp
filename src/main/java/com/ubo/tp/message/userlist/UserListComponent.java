@@ -40,7 +40,7 @@ public class UserListComponent extends JPanel implements UserListViewObserver {
 
     @Override
     public void switchHome() {
-
+        //unused
     }
 
     @Override
@@ -52,6 +52,7 @@ public class UserListComponent extends JPanel implements UserListViewObserver {
 
     @Override
     public void switchMyProfile() {
+        //unused
 
     }
 }

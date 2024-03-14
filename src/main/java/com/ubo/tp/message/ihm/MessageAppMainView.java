@@ -22,9 +22,9 @@ public class MessageAppMainView {
         frame.setIconImage(icon.getImage());
         frame.setSize(1200,700);
 
-        JPanel mPanel = new JPanel(new GridBagLayout());
-        frame.setContentPane(mPanel);
-        this.mPanel = mPanel;
+        JPanel panel = new JPanel(new GridBagLayout());
+        frame.setContentPane(panel);
+        this.mPanel = panel;
         this.mFrame = frame;
     }
 

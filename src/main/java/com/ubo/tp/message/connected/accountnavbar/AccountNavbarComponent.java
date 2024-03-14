@@ -23,11 +23,12 @@ public class AccountNavbarComponent extends JPanel implements NavigatorObserver 
 
     @Override
     public void switchHome() {
-
+        //unused
     }
 
     @Override
     public void switchUserProfile(User user) {
+        //unused
 
     }
 

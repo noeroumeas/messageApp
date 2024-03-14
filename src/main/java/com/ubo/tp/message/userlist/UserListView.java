@@ -50,6 +50,7 @@ public class UserListView extends JPanel implements NavigatorObserver, FilterEle
 
     @Override
     public void switchHome() {
+        //unused
 
     }
 
@@ -63,6 +64,7 @@ public class UserListView extends JPanel implements NavigatorObserver, FilterEle
     @Override
     public void switchMyProfile() {
 
+        //unused
     }
 
     @Override
@@ -77,6 +79,7 @@ public class UserListView extends JPanel implements NavigatorObserver, FilterEle
 
     @Override
     public void elementRemoved(User u) {
+        //unused
 
     }
 }

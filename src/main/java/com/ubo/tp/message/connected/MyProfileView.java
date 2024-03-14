@@ -63,6 +63,7 @@ public class MyProfileView extends JPanel implements ISessionObserver {
 
     @Override
     public void notifyLogout() {
+        //unused
 
     }
 }

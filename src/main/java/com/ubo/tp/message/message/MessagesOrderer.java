@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MessagesOrderer {
-    public static ArrayList<Message> orderMessagesList(List<Message> unorderedList){
+    private MessagesOrderer(){}
+    public static List<Message> orderMessagesList(List<Message> unorderedList){
         ArrayList<Message> orderedList = new ArrayList<>();
         for(Message m : unorderedList){
             addMessageToList(orderedList, m);

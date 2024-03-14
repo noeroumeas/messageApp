@@ -123,8 +123,8 @@ public class LoginController implements LoginViewObserver, RegisterViewObserver 
      * @return
      */
     protected RegisterError isRegisterValid(String name, String tag, String password, String password2, String path){
-        Boolean isTagEmpty = tag.isEmpty();
-        Boolean isNameEmpty = name.isEmpty();
+        boolean isTagEmpty = tag.isEmpty();
+        boolean isNameEmpty = name.isEmpty();
         if(!password.equals(password2)){
             return RegisterError.PASSWORD_NOT_SAME;
         }

@@ -25,12 +25,7 @@ public class WindowMenuBar extends JMenuBar{
         JMenuItem quitMenuItem = new JMenuItem("Quitter");
         ImageIcon exitIcon = new ImageIcon("src/main/resources/images/exitIcon_20.png");
         quitMenuItem.setIcon(exitIcon);
-        quitMenuItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
+        quitMenuItem.addActionListener(e -> System.exit(0));
 
         menu.add(quitMenuItem);
         return menu;
@@ -52,20 +47,24 @@ public class WindowMenuBar extends JMenuBar{
             @Override
             public void mousePressed(MouseEvent e) {
 
+                //unused
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
+                //unused
 
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
+                //unused
 
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
+                //unused
 
             }
         });

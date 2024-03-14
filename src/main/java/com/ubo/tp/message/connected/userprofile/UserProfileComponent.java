@@ -34,11 +34,13 @@ public class UserProfileComponent extends JPanel implements NavigatorObserver {
 
     @Override
     public void switchUserProfile(User user) {
+        //unused
 
     }
 
     @Override
     public void switchMyProfile() {
+        //unused
 
     }
     public void addObserver(NavigatorObserver observer){

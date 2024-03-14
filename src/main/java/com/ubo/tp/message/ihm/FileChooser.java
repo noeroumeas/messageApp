@@ -5,21 +5,17 @@ import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 
 public class FileChooser {
-    protected JFileChooser fileChooser;
+    protected JFileChooser fChooser;
     public FileChooser(){
-        JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView());
-        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        this.fileChooser = fileChooser;
+        this.fChooser = new JFileChooser(FileSystemView.getFileSystemView());
+        this.fChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
     }
 
     public File getFolder(JFrame originFrame){
-        int returnVal = fileChooser.showOpenDialog(originFrame);
+        int returnVal = this.fChooser.showOpenDialog(originFrame);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            File folder = fileChooser.getSelectedFile();
-            System.out.println("File: " + folder.getName() + ".");
-            return folder;
+            return this.fChooser.getSelectedFile();
         }
-        System.out.println("Open command cancelled by user.");
         return this.getFolder(originFrame);
 
     }
