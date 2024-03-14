@@ -100,7 +100,7 @@ public class LoginController implements LoginViewObserver, RegisterViewObserver 
     @Override
     public void register(String name, String tag, String password, String password2, String avatarPath) {
         RegisterError registerError = isRegisterValid(name, tag, password, password2, avatarPath);
-        String path = avatarPath == null ? "src/main/resources/images/logo_50.png" : avatarPath;
+        String path = avatarPath == null ? "/home/noerms/icon.png" : avatarPath;
         if(registerError == RegisterError.VALID){
             UUID userUUID = UUID.randomUUID();
             User newUser = new User(userUUID, tag, password, name, new HashSet<>(), path);
